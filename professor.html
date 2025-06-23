@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Professor Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring Professors. Learn academic development, research skills, teaching excellence, and publication strategies.">
+  <meta property="og:title" content="Professor Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step guide to becoming a Professor with focus on research, pedagogy, higher education qualifications, and subject expertise.">
+  <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>Professor Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>📘 What Is This Role?</h2>
+      <p>
+        A Professor plays a key role in academia, combining teaching, research, and mentorship. They contribute to knowledge dissemination, curriculum development, and often lead research projects within their discipline.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>📈 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Examples / Topics</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>🎓 Foundation</td>
+              <td>Complete undergraduate and postgraduate education in a chosen subject</td>
+              <td>BA/BSc, MA/MSc, Subject Specialization</td>
+            </tr>
+            <tr>
+              <td>📚 Research</td>
+              <td>Pursue PhD, engage in scholarly research, begin publishing</td>
+              <td>Doctoral Dissertation, Peer-reviewed Papers</td>
+            </tr>
+            <tr>
+              <td>🧑‍🏫 Teaching</td>
+              <td>Gain teaching experience, develop educational content and lecture delivery skills</td>
+              <td>Assistant Professor, Teaching Assistantships</td>
+            </tr>
+            <tr>
+              <td>🏛️ Career Growth</td>
+              <td>Advance to Associate/Full Professor roles, guide PhD students, lead departments</td>
+              <td>Curriculum Design, Department Head, Conferences</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://www.coursera.org/learn/learning-how-to-learn" target="_blank">Learning How to Learn – Coursera</a></li>
+        <li><a href="https://www.edx.org/course/university-teaching" target="_blank">University Teaching – edX</a></li>
+        <li><a href="https://www.springernature.com/gp/researchers" target="_blank">Springer Nature for Researchers</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🧠 Skills You’ll Need</h2>
+      <ul>
+        <li>Subject expertise</li>
+        <li>Academic writing & publishing</li>
+        <li>Teaching & communication</li>
+        <li>Critical thinking & mentorship</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>PhD in relevant subject</li>
+        <li>Postdoctoral fellowships</li>
+        <li>Pedagogical training or university teaching certifications</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📝 Summary Card</h3>
+      <p><span class="highlight">Role:</span> Professor</p>
+      <p><span class="highlight">Start With:</span> Bachelor's and Master's in chosen field</p>
+      <p><span class="highlight">Build:</span> Research, publish, teach, and contribute to academia</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://www.edx.org/course/university-teaching" target="_blank">University Teaching – edX</a></p>
+    </div>
+
+     <h1 id="careerTitle">Professor</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>
+
+
+

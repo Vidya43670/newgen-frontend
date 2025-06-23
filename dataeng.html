@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Data Engineer Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring Data Engineers. Learn SQL, Python, cloud platforms, and data pipeline architectures.">
+  <meta property="og:title" content="Data Engineer Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step guide to becoming a Data Engineer with tools like Spark, AWS, and Airflow.">
+<link rel="stylesheet" href="explore.css">  
+</head>
+  <body>
+  <header>
+    <h1>Data Engineer Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>🔧 What Is This Role?</h2>
+      <p>
+        Data Engineers design and build pipelines that collect, transform, and store data for analysis and machine learning. They work closely with analysts, scientists, and software engineers.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>📈 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Tools / Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📘 Foundation</td>
+              <td>Learn SQL, Python, and understand data types and storage systems</td>
+              <td><a href="https://youtu.be/HXV3zeQKqGY" target="_blank">SQL Tutorial – freeCodeCamp</a></td>
+            </tr>
+            <tr>
+              <td>⚙️ Tools</td>
+              <td>Explore ETL pipelines, cloud storage, and batch vs. stream processing</td>
+              <td>AWS S3, Apache Spark, Kafka, Hadoop</td>
+            </tr>
+            <tr>
+              <td>🧠 Build</td>
+              <td>Implement data pipelines, data lakes, and warehouse integration</td>
+              <td>Airflow, Snowflake, BigQuery, Redshift</td>
+            </tr>
+            <tr>
+              <td>🚀 Advance</td>
+              <td>Optimize performance, ensure data quality and orchestration</td>
+              <td>dbt, Great Expectations, Prefect</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://www.coursera.org/professional-certificates/ibm-data-engineer" target="_blank">IBM Data Engineer – Coursera</a></li>
+        <li><a href="https://dataengineering.wiki/" target="_blank">The Data Engineering Wiki</a></li>
+        <li><a href="https://www.udemy.com/course/the-data-engineering-bootcamp/" target="_blank">Data Engineering Bootcamp – Udemy</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🧠 Skills You’ll Need</h2>
+      <ul>
+        <li>SQL & Python</li>
+        <li>Data modeling & warehousing</li>
+        <li>Cloud platforms (AWS, GCP, Azure)</li>
+        <li>ETL/ELT tools & pipelines</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Google Professional Data Engineer</li>
+        <li>AWS Certified Data Analytics</li>
+        <li>Microsoft Azure Data Engineer Associate</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📝 Summary Card</h3>
+      <p><span class="highlight">Role:</span> Data Engineer</p>
+      <p><span class="highlight">Start With:</span> SQL and Python basics</p>
+      <p><span class="highlight">Build:</span> ETL pipelines and cloud-based data platforms</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://airflow.apache.org/" target="_blank">Apache Airflow</a></p>
+    </div>
+
+      <h1 id="careerTitle">Data Engineer</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>
+

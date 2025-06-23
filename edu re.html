@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Educational Researcher Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring Educational Researchers. Learn about pedagogy, curriculum evaluation, statistical analysis, and educational policies.">
+  <meta property="og:title" content="Educational Researcher Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step guide to becoming an Educational Researcher with focus on learning outcomes, teaching effectiveness, and data-driven education improvement.">
+  <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>Educational Researcher Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>📘 What Is This Role?</h2>
+      <p>
+        Educational Researchers investigate how people learn and how educational practices can be improved. They design and conduct studies to enhance teaching methods, learning environments, and curriculum development using data and theory.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>📈 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Examples / Topics</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📘 Foundation</td>
+              <td>Learn pedagogy basics, child psychology, and instructional theory</td>
+              <td>Bloom's Taxonomy, Learning Theories</td>
+            </tr>
+            <tr>
+              <td>📚 Deep Dive</td>
+              <td>Study research methods, assessment strategies, and statistics</td>
+              <td>Quantitative & Qualitative Analysis, Surveys, SPSS</td>
+            </tr>
+            <tr>
+              <td>🔍 Research</td>
+              <td>Conduct studies, evaluate curriculum, publish findings</td>
+              <td>Longitudinal Studies, Peer-reviewed Journals</td>
+            </tr>
+            <tr>
+              <td>🧠 Advance</td>
+              <td>Contribute to education policy, collaborate with institutions</td>
+              <td>Policy Whitepapers, Educational Boards</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://www.coursera.org/specializations/educational-research" target="_blank">Educational Research Specialization – Coursera</a></li>
+        <li><a href="https://www.edx.org/course/foundations-of-educational-research" target="_blank">Foundations of Educational Research – edX</a></li>
+        <li><a href="https://eric.ed.gov/" target="_blank">ERIC (Education Resources Information Center)</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🧠 Skills You’ll Need</h2>
+      <ul>
+        <li>Research design and methodology</li>
+        <li>Data analysis & interpretation</li>
+        <li>Knowledge of education systems</li>
+        <li>Academic writing & communication</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Master’s or PhD in Education or related field</li>
+        <li>Certifications in research and data analysis tools</li>
+        <li>Post-doctoral fellowships in educational studies</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📝 Summary Card</h3>
+      <p><span class="highlight">Role:</span> Educational Researcher</p>
+      <p><span class="highlight">Start With:</span> Learning theories and pedagogy</p>
+      <p><span class="highlight">Build:</span> Research design and curriculum evaluation</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://eric.ed.gov/" target="_blank">Browse Education Research Papers</a></p>
+    </div>
+
+    <h1 id="careerTitle">Educational Researcher</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>
+

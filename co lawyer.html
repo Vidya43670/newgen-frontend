@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Corporate Lawyer Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring Corporate Lawyers. Learn legal fundamentals, corporate law, and contract negotiation.">
+  <meta property="og:title" content="Corporate Lawyer Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step guide to becoming a Corporate Lawyer with skills in M&A, legal compliance, and business contracts.">
+ <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>Corporate Lawyer Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>🔧 What Is This Role?</h2>
+      <p>
+        Corporate Lawyers advise companies on their legal obligations, contracts, mergers and acquisitions, and corporate governance. They work to ensure businesses comply with laws and minimize legal risks.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>📈 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Tools / Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📘 Foundation</td>
+              <td>Earn a law degree (LLB or JD), understand constitutional, contract and business law</td>
+              <td>Harvard Online Law School, NLU India</td>
+            </tr>
+            <tr>
+              <td>⚙️ Internships</td>
+              <td>Intern under corporate law firms and gain exposure to real-world business issues</td>
+              <td>AZB Partners, Khaitan & Co., Trilegal</td>
+            </tr>
+            <tr>
+              <td>🧠 Specialize</td>
+              <td>Study mergers and acquisitions, securities law, arbitration, and compliance</td>
+              <td>Bar Council of India guidelines, SEBI regulations</td>
+            </tr>
+            <tr>
+              <td>🚀 Advance</td>
+              <td>Handle corporate transactions, advise on IPOs, negotiate international deals</td>
+              <td>Deloitte, PwC Legal, Ernst & Young</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://pll.harvard.edu/course/corporate-law" target="_blank">Corporate Law – HarvardX</a></li>
+        <li><a href="https://www.coursera.org/learn/business-law" target="_blank">Business Law – Coursera</a></li>
+        <li><a href="https://www.icsi.edu/" target="_blank">Institute of Company Secretaries of India</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🧠 Skills You’ll Need</h2>
+      <ul>
+        <li>Strong legal research and writing</li>
+        <li>Understanding of business operations</li>
+        <li>Contract negotiation & drafting</li>
+        <li>Risk analysis and compliance management</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Company Secretary (CS)</li>
+        <li>LL.M. in Corporate Law</li>
+        <li>Diploma in Business Law (NALSAR, ILI, etc.)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📝 Summary Card</h3>
+      <p><span class="highlight">Role:</span> Corporate Lawyer</p>
+      <p><span class="highlight">Start With:</span> Law degree and internships</p>
+      <p><span class="highlight">Build:</span> Expertise in corporate contracts, M&A, compliance</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://www.legal500.com/firms/" target="_blank">Top Law Firms</a></p>
+    </div>
+
+    <h1 id="careerTitle">Corporate Lawyer</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>

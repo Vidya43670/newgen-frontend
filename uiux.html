@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | UX/UI Designer Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring UX/UI Designers. Learn user research, design tools, wireframing, prototyping, and UI principles.">
+  <meta property="og:title" content="UX/UI Designer Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step guide to becoming a UX/UI Designer with focus on user-centric design, usability, and interface aesthetics.">
+  <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>UX/UI Designer Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>🎨 What Is This Role?</h2>
+      <p>
+        A UX/UI Designer focuses on creating meaningful and seamless user experiences through interface design, research, and usability. They combine creativity, psychology, and technical skills to design intuitive digital products.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>📈 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Examples / Topics</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>🧩 Foundation</td>
+              <td>Basics of UX/UI principles, human-centered design, and user psychology</td>
+              <td>UX laws, Design Thinking, Nielsen's Heuristics</td>
+            </tr>
+            <tr>
+              <td>🎨 Skill Building</td>
+              <td>Learn wireframing, prototyping, design tools, and responsive layouts</td>
+              <td>Figma, Adobe XD, Sketch, Balsamiq</td>
+            </tr>
+            <tr>
+              <td>🔍 Research</td>
+              <td>Conduct user interviews, surveys, and usability testing</td>
+              <td>Personas, Journey Mapping, A/B Testing</td>
+            </tr>
+            <tr>
+              <td>🚀 Portfolio</td>
+              <td>Build and showcase projects with real-world user flow and feedback</td>
+              <td>Case Studies, Behance, Dribbble, GitHub Pages</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://www.interaction-design.org/" target="_blank">Interaction Design Foundation</a></li>
+        <li><a href="https://www.coursera.org/specializations/ui-ux-design" target="_blank">Coursera UI/UX Design Specialization</a></li>
+        <li><a href="https://uxdesign.cc/" target="_blank">UX Design Blog</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>💡 Skills You’ll Need</h2>
+      <ul>
+        <li>User research & empathy</li>
+        <li>Prototyping & wireframing</li>
+        <li>Visual design & branding</li>
+        <li>Usability testing & iteration</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Google UX Design Certificate</li>
+        <li>Interaction Design Foundation Membership</li>
+        <li>Adobe Creative Suite Certification</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📌 Summary Card</h3>
+      <p><span class="highlight">Role:</span> UX/UI Designer</p>
+      <p><span class="highlight">Start With:</span> User experience basics and design principles</p>
+      <p><span class="highlight">Build:</span> Wireframes, research, and strong design portfolio</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://www.figma.com/resources/learn-design/" target="_blank">Figma Learn Design</a></p>
+    </div>
+
+   <h1 id="careerTitle">UX/UI Designer</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>
+
+
+

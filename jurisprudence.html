@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Jurisprudence Analyst Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring Jurisprudence Analysts. Learn legal theory, case analysis, policy impact, and critical reasoning.">
+  <meta property="og:title" content="Jurisprudence Analyst Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step guide to becoming a Jurisprudence Analyst with focus on legal theory, analytical methods, and law interpretation.">
+  <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>Jurisprudence Analyst Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>📘 What Is This Role?</h2>
+      <p>
+        A Jurisprudence Analyst focuses on the interpretation, analysis, and impact of legal theories in real-world systems. They bridge the gap between legal theory and practice, evaluating how philosophical doctrines affect legislative processes and legal frameworks.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>📈 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Examples / Topics</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📘 Foundation</td>
+              <td>Understand legal systems, history of legal thought, and logic in law</td>
+              <td>Legal Theory Basics, Judicial Reasoning, Law & Society</td>
+            </tr>
+            <tr>
+              <td>📚 Explore</td>
+              <td>Analyze legal doctrines and their application in courts</td>
+              <td>Interpretivism, Legal Positivism, Law and Morality</td>
+            </tr>
+            <tr>
+              <td>🔍 Research</td>
+              <td>Evaluate real-world policy, conduct legal impact studies</td>
+              <td>Comparative Law, Policy Review, Juridical Data</td>
+            </tr>
+            <tr>
+              <td>🧠 Apply</td>
+              <td>Work with think tanks, assist lawmakers or publish policy papers</td>
+              <td>Policy Advising, White Papers, Law Journals</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://plato.stanford.edu/entries/legal-positivism/" target="_blank">Stanford Legal Positivism</a></li>
+        <li><a href="https://www.futurelearn.com/courses/philosophy-of-law" target="_blank">FutureLearn – Philosophy of Law</a></li>
+        <li><a href="https://oyc.yale.edu/political-science/plsc-118" target="_blank">Yale: Moral Foundations of Politics</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🧠 Skills You’ll Need</h2>
+      <ul>
+        <li>Legal reasoning and analysis</li>
+        <li>Understanding of legal doctrines and schools of thought</li>
+        <li>Research methodology and data interpretation</li>
+        <li>Critical thinking and communication</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Advanced degrees in Law or Legal Theory</li>
+        <li>Policy and Governance programs</li>
+        <li>Legal Data Analysis or Public Policy fellowships</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📝 Summary Card</h3>
+      <p><span class="highlight">Role:</span> Jurisprudence Analyst</p>
+      <p><span class="highlight">Start With:</span> Fundamentals of legal theory and judicial systems</p>
+      <p><span class="highlight">Build:</span> Analytical and policy evaluation skills</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://plato.stanford.edu/entries/lawphil-theory/" target="_blank">Stanford Legal Philosophy Overview</a></p>
+    </div>
+
+   <h1 id="careerTitle">Jurisprudence Analyst</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>
+

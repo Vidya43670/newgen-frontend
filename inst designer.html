@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Instructional Designer Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring Instructional Designers. Learn curriculum development, educational technology, learning theories, and instructional design models.">
+  <meta property="og:title" content="Instructional Designer Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step guide to becoming an Instructional Designer with a focus on learning theories, digital tools, and curriculum design.">
+  <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>Instructional Designer Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>📘 What Is This Role?</h2>
+      <p>
+        An Instructional Designer develops educational materials and courses that facilitate effective learning. This role involves applying instructional design models, integrating technology, and aligning with learner needs to create engaging learning experiences.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>📈 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Examples / Topics</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📘 Foundation</td>
+              <td>Learn instructional theories and learning models</td>
+              <td>ADDIE Model, Bloom's Taxonomy, Gagne’s Nine Events</td>
+            </tr>
+            <tr>
+              <td>📚 Tools</td>
+              <td>Master course design tools and learning management systems</td>
+              <td>Articulate Storyline, Adobe Captivate, Moodle</td>
+            </tr>
+            <tr>
+              <td>🧠 Application</td>
+              <td>Create instructional materials and digital content</td>
+              <td>Lesson plans, eLearning modules, gamified content</td>
+            </tr>
+            <tr>
+              <td>🚀 Advance</td>
+              <td>Lead projects, evaluate learning effectiveness, research trends</td>
+              <td>Learning Analytics, User Testing, Microlearning</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://www.coursera.org/specializations/instructional-design" target="_blank">Instructional Design Specialization – Coursera</a></li>
+        <li><a href="https://www.edx.org/course/instructional-design" target="_blank">Instructional Design – edX</a></li>
+        <li><a href="https://teachonline.ca/tools-trends/instructional-design" target="_blank">Ontario TeachOnline – Instructional Design</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🧠 Skills You’ll Need</h2>
+      <ul>
+        <li>Curriculum and content design</li>
+        <li>Understanding of adult learning principles</li>
+        <li>Proficiency in authoring tools and eLearning software</li>
+        <li>Visual design and multimedia integration</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Certificate in Instructional Design (ATD, Coursera, etc.)</li>
+        <li>Master’s in Education Technology or Instructional Design</li>
+        <li>eLearning Developer Certification</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📝 Summary Card</h3>
+      <p><span class="highlight">Role:</span> Instructional Designer</p>
+      <p><span class="highlight">Start With:</span> Instructional theory and learning models</p>
+      <p><span class="highlight">Build:</span> eLearning tools and course development</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://www.coursera.org/learn/instructional-design" target="_blank">Free Intro Course on Coursera</a></p>
+    </div>
+
+   <h1 id="careerTitle">Innovation Designer</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>
+

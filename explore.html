@@ -1,0 +1,190 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explore Careers - Newgen</title>
+  <style>
+    :root {
+      --primary-blue: #0077b6;
+      --light-blue: #d0e8f2;
+      --white: #ffffff;
+      --card-shadow: rgba(0, 0, 0, 0.1);
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #f8fbfd;
+      color: #003049;
+    }
+
+    header {
+      background-color: var(--primary-blue);
+      padding: 20px;
+      text-align: center;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px var(--card-shadow);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .search-bar {
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .search-bar input {
+      width: 100%;
+      max-width: 500px;
+      padding: 12px 18px;
+      font-size: 16px;
+      border: 1px solid #aad4ec;
+      border-radius: 8px;
+      outline: none;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .career-card {
+      background-color: var(--white);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px var(--card-shadow);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .career-card:hover {
+      transform: translateY(-5px);
+      background-color: #eaf6ff;
+    }
+
+    .career-card h3 {
+      margin-top: 0;
+      color: var(--primary-blue);
+      font-size: 1.2rem;
+    }
+
+    .career-card p {
+      margin: 10px 0 0;
+      font-size: 0.95rem;
+      color: #333;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Explore Career Paths</h1>
+  </header>
+  <div class="container">
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search careers (e.g., AI Engineer, UX Designer)..." onkeyup="filterCards()" />
+    </div>
+    <div class="cards-grid" id="careerGrid">
+      <!-- Career cards dynamically generated based on full role list -->
+      <script>
+        const careers = [
+          { title: "Creative Coder", link: "creative coder.html", desc: "Code artistic, interactive digital visuals and experiences." },
+          { title: "Generative Artist", link: "gen artist.html", desc: "Create algorithmic art using code and data." },
+          { title: "Art Director", link: "artdirector.html", desc: "Oversee visual style and imagery in creative projects." },
+          { title: "Creative Manager", link: "creativemanager.html", desc: "Manage and guide creative teams and workflows." },
+          { title: "Game Designer", link: "gamedesigner.html", desc: "Design gameplay mechanics, stories, and game environments." },
+          { title: "AR/VR Developer", link: "ARVR.html", desc: "Develop immersive experiences using AR and VR technologies." },
+          { title: "Data Visualization Artist", link: "dataviz.html", desc: "Transform data into compelling visuals and graphics." },
+          { title: "UX Researcher", link: "ux research.html", desc: "Study user behavior to enhance design decisions." },
+          { title: "Medical Software Developer", link: "med software.html", desc: "Develop digital tools for healthcare services." },
+          { title: "Health Informatics Specialist", link: "health info.html", desc: "Manage and analyze healthcare information systems." },
+          { title: "Healthcare Project Manager", link: "healthcare pm.html", desc: "Lead and manage health tech-related projects." },
+          { title: "Medical Consultant", link: "med consultant.html", desc: "Advise on medical and healthcare matters." },
+          { title: "Medical Researcher", link: "med researcher.html", desc: "Conduct research to advance medical knowledge." },
+          { title: "Biomedical Engineer", link: "biomed engineer.html", desc: "Design tech to improve healthcare diagnostics and therapy." },
+          { title: "Medical Data Scientist", link: "med datascientist.html", desc: "Analyze health data to derive clinical insights." },
+          { title: "Epidemiologist", link: "epidemiologist.html", desc: "Study disease patterns and public health trends." },
+          { title: "Business Intelligence Developer", link: "BIdev.html", desc: "Create tools to transform business data into insights." },
+          { title: "Data Engineer", link: "dataeng.html", desc: "Build pipelines to gather and manage big data." },
+          { title: "Business Consultant", link: "businesscons.html", desc: "Provide strategic guidance to businesses." },
+          { title: "Project Manager", link: "project manager.html", desc: "Plan, execute, and close projects effectively." },
+          { title: "Innovation Manager", link: "innov manager.html", desc: "Drive innovation through technology and strategy." },
+          { title: "Product Designer", link: "product designer.html", desc: "Design user-first products for real-world use." },
+          { title: "Data Scientist", link: "datascientist.html", desc: "Turn raw data into actionable business insights." },
+          { title: "AI Engineer", link: "AI eng.html", desc: "Design intelligent systems and machine learning models." },
+          { title: "Software Engineer", link: "software eng.html", desc: "Build and maintain scalable software applications." },
+          { title: "Systems Architect", link: "sys architect.html", desc: "Design complex computing systems and frameworks." },
+          { title: "Technical Team Lead", link: "tech tl.html", desc: "Lead development teams in building high-quality software." },
+          { title: "Engineering Manager", link: "eng manager.html", desc: "Oversee engineering teams and deliver solutions." },
+          { title: "Robotics Engineer", link: "roboticseng.html", desc: "Design, build, and program robotic systems." },
+          { title: "Product Developer", link: "productdev.html", desc: "Turn concepts into tangible, user-friendly products." },
+          { title: "Embedded Systems Analyst", link: "emb system analyst.html", desc: "Work with hardware-software integration in devices." },
+          { title: "Corporate Lawyer", link: "co lawyer.html", desc: "Provide legal advice to businesses and corporations." },
+          { title: "Legal Consultant", link: "legal cons.html", desc: "Advise clients on complex legal matters and compliance." },
+          { title: "Legal Aid Advocate", link: "legal aid.html", desc: "Support underprivileged communities with legal aid." },
+          { title: "Social Justice Lawyer", link: "soc justice lawyer.html", desc: "Advocate for human rights and social causes." },
+          { title: "Policy Innovator", link: "policy inno.html", desc: "Design impactful public policies using data and trends." },
+          { title: "Cyber Law Expert", link: "cyber law.html", desc: "Handle legal issues related to digital and cyber spaces." },
+          { title: "Legal Researcher", link: "legal researcher.html", desc: "Conduct research to support legal analysis and reforms." },
+          { title: "Jurisprudence Analyst", link: "jurisprudence.html", desc: "Study and evaluate legal theories and systems." },
+          { title: "Professor", link: "professor.html", desc: "Teach and conduct research in higher education." },
+          { title: "Educational Researcher", link: "edu re.html", desc: "Investigate educational methods and technologies." },
+{ title: "Academic Counsellor", link: "academic.html", desc: "Guide students in academic and career planning." },
+          { title: "School Principal", link: "school.html", desc: "Lead academic and administrative operations in schools." },
+          { title: "Instructional Designer", link: "inst designer.html", desc: "Create learning experiences and training content." },
+          { title: "EdTech Creator", link: "edtech.html", desc: "Develop educational content using modern technology." },
+          { title: "Curriculum Analyst", link: "curriculum.html", desc: "Design and evaluate educational programs and curricula." },
+          { title: "Learning Metrics Specialist", link: "metrics.html", desc: "Analyze education data to measure learning outcomes." },
+          { title: "UX/UI Designer", link: "uiux.html", desc: "Design user-friendly digital experiences and interfaces." },
+          { title: "Design Strategist", link: "design strategist.html", desc: "Combine business strategy with design thinking." },
+          { title: "Creative Director", link: "creative director.html", desc: "Lead the creative vision of projects or brands." },
+          { title: "Visual Identity Lead", link: "vil.html", desc: "Craft and manage brand visual language and design." },
+          { title: "Innovation Designer", link: "innovation.html", desc: "Design breakthrough user experiences and services." },
+          { title: "AR/VR Artist", link: "arvr artist.html", desc: "Create immersive virtual and augmented reality content." },
+          { title: "Design Researcher", link: "design researcher.html", desc: "Conduct research to inform design decisions." },
+          { title: "Human Factors Analyst", link: "hfa.html", desc: "Optimize systems based on user behavior and ergonomics." },
+        { title: "AIML Engineer", link: "AIML ENG.html", desc: "Build and deploy AI/ML models to solve real-world problems." },
+];
+
+        const grid = document.getElementById("careerGrid");
+        careers.forEach(({ title, link, desc }) => {
+          const card = document.createElement("div");
+          card.className = "career-card";
+  card.innerHTML = `<h3><a href="${link}">${title}</a></h3><p>${desc}</p>`; // Use backticks ` ` for template literals
+          grid.appendChild(card);
+        });
+      </script>
+    </div>
+  </div>
+  <script>
+    function filterCards() {
+      const input = document.getElementById('searchInput');
+      const filter = input.value.toLowerCase();
+      const cards = document.querySelectorAll('.career-card');
+
+      cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        card.style.display = text.includes(filter) ? 'block' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Game Designer Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring Game Designers. Learn tools like Unity, Unreal Engine, and game mechanics.">
+  <meta property="og:title" content="Game Designer Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step beginner-friendly guide to becoming a Game Designer with courses, tools, and examples.">
+  <link rel="stylesheet" href="explore.css">
+   
+</head>
+<body>
+  <header>
+    <h1>Game Designer Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>🎮 What Is This Role?</h2>
+      <p>
+        Game Designers create the gameplay experience, including story, mechanics, levels, and user engagement. They work with developers and artists to bring interactive worlds to life.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>📈 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Tools / Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📘 Foundation</td>
+              <td>Understand game design theory, storytelling, and basic programming</td>
+              <td><a href="https://youtu.be/Qj1FK8n7WgY" target="_blank">Game Design Fundamentals – YouTube</a></td>
+            </tr>
+            <tr>
+              <td>🕹 Tools</td>
+              <td>Learn game engines and level design</td>
+              <td>Unity, Unreal Engine, Godot</td>
+            </tr>
+            <tr>
+              <td>🧠 Build</td>
+              <td>Create small game projects to understand mechanics and feedback loops</td>
+              <td>itch.io, GitHub, Construct</td>
+            </tr>
+            <tr>
+              <td>🚀 Advance</td>
+              <td>Specialize in areas like narrative design, level design, or systems design</td>
+              <td>Unity Asset Store, GameDev.tv</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://youtu.be/Qj1FK8n7WgY" target="_blank">Game Design Course – Extra Credits</a></li>
+        <li><a href="https://www.udemy.com/course/unitycourse/" target="_blank">Unity Game Development – Udemy</a></li>
+        <li><a href="https://www.coursera.org/specializations/game-design" target="_blank">Game Design Specialization – Coursera</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎯 Skills You’ll Need</h2>
+      <ul>
+        <li>Game mechanics & balancing</li>
+        <li>Unity, Unreal Engine</li>
+        <li>Basic scripting (C#, Python)</li>
+        <li>Storytelling, creativity, logic</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Unity Certified Associate</li>
+        <li>Coursera Game Design Specialization</li>
+        <li>Godot Game Design Courses – Udemy</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📝 Summary Card</h3>
+      <p><span class="highlight">Role:</span> Game Designer</p>
+      <p><span class="highlight">Start With:</span> Game mechanics and Unity engine</p>
+      <p><span class="highlight">Build:</span> Simple playable games and level demos</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://unity.com/" target="_blank">Unity Game Engine</a></p>
+    </div>
+
+    <h1 id="careerTitle">Game Designer</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>
+

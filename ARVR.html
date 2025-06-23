@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | AR/VR Developer Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring AR/VR Developers. Learn Unity, ARKit, WebXR and build immersive applications.">
+  <meta property="og:title" content="AR/VR Developer Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step beginner-friendly guide to becoming an AR/VR Developer with courses, tools, and examples.">
+  <link rel="stylesheet" href="explore.css">
+
+</head>
+<body>
+  <header>
+    <h1>AR/VR Developer Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>🧠 What Is This Role?</h2>
+      <p>
+        AR/VR Developers build immersive experiences using virtual and augmented reality technologies. They create simulations, games, and interactive experiences for headsets, mobile, or the web.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>📈 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Tools / Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📘 Foundation</td>
+              <td>Learn basic programming (C#, JS), 3D math, and design principles</td>
+              <td><a href="https://youtu.be/rtR63-ecUNo" target="_blank">Intro to XR – YouTube</a></td>
+            </tr>
+            <tr>
+              <td>🧰 Tools</td>
+              <td>Work with Unity, WebXR, ARKit/ARCore</td>
+              <td>Unity, Vuforia, Lens Studio</td>
+            </tr>
+            <tr>
+              <td>🌍 Build</td>
+              <td>Develop sample apps/games for Oculus, HoloLens, or mobile</td>
+              <td>Unity Hub, GitHub, itch.io</td>
+            </tr>
+            <tr>
+              <td>🚀 Advance</td>
+              <td>Explore AI in AR/VR, haptic feedback, and spatial computing</td>
+              <td>Unreal Engine, MRTK, WebXR APIs</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://youtu.be/rtR63-ecUNo" target="_blank">AR/VR for Beginners – Valem Tutorials</a></li>
+        <li><a href="https://www.udemy.com/course/the-complete-ar-developer-course/" target="_blank">Complete AR Course – Udemy</a></li>
+        <li><a href="https://www.coursera.org/specializations/vr" target="_blank">Virtual Reality Specialization – Coursera</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🔧 Skills You’ll Need</h2>
+      <ul>
+        <li>Unity, Unreal Engine, Blender basics</li>
+        <li>C#, JavaScript, or Python</li>
+        <li>3D design and UX for immersive environments</li>
+        <li>Problem-solving and interaction design</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Unity Certified Associate</li>
+        <li>Meta Spark Creator Certification</li>
+        <li>Coursera VR Specialization</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>🎯 Summary Card</h3>
+      <p><span class="highlight">Role:</span> AR/VR Developer</p>
+      <p><span class="highlight">Start With:</span> Unity and ARKit basics</p>
+      <p><span class="highlight">Build:</span> AR filters, VR scenes, interactive prototypes</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://learn.unity.com/" target="_blank">Unity Learn</a></p>
+    </div>
+
+    <h1 id="careerTitle">AR/VR Developer</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>

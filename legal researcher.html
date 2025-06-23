@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Legal Researcher Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring Legal Researchers. Learn legal research, writing, and citation tools.">
+  <meta property="og:title" content="Legal Researcher Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step guide to becoming a Legal Researcher with tools like Manupatra, SCC Online, and JSTOR.">
+ <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>Legal Researcher Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>🔧 What Is This Role?</h2>
+      <p>
+        A Legal Researcher investigates case laws, statutes, regulations, and academic materials to provide insights and documentation for legal proceedings, policy work, or academic research.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>📈 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Tools / Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📘 Foundation</td>
+              <td>Understand legal systems, case reading, and legal writing basics</td>
+              <td>Indian Kanoon, LegalEdge, NALSAR notes</td>
+            </tr>
+            <tr>
+              <td>🧰 Skills</td>
+              <td>Learn legal research methodology, citation practices</td>
+              <td>Bluebook, Manupatra, SCC Online</td>
+            </tr>
+            <tr>
+              <td>🔍 Explore</td>
+              <td>Research across domains like constitutional, IP, or environmental law</td>
+              <td>LexisNexis, JSTOR, HeinOnline</td>
+            </tr>
+            <tr>
+              <td>🏛️ Apply</td>
+              <td>Assist professors, law firms, or policy think tanks with research work</td>
+              <td>NLUD Journals, Vidhi Centre, PRSIndia.org</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://www.coursera.org/learn/legal-research" target="_blank">Legal Research for Beginners – Coursera</a></li>
+        <li><a href="https://ili.ac.in/" target="_blank">Indian Law Institute</a></li>
+        <li><a href="https://legalwritingacademy.com/" target="_blank">Legal Writing Academy</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🧠 Skills You’ll Need</h2>
+      <ul>
+        <li>Legal reading & comprehension</li>
+        <li>Legal writing & analysis</li>
+        <li>Citation formats (Bluebook, ILI)</li>
+        <li>Research tools & legal databases</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Certificate in Legal Research Methodology – ILI</li>
+        <li>Advanced Diploma in Legislative Drafting – IGNOU</li>
+        <li>Certified Legal Researcher – NALSAR/LegalEdge</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📝 Summary Card</h3>
+      <p><span class="highlight">Role:</span> Legal Researcher</p>
+      <p><span class="highlight">Start With:</span> Understanding legal sources and writing structure</p>
+      <p><span class="highlight">Build:</span> Research portfolios and case study insights</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://main.sci.gov.in/" target="_blank">Summarize a Supreme Court case</a></p>
+    </div>
+
+      <h1 id="careerTitle">Legal Researcher</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>
+

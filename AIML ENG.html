@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | AI/ML Engineer Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring AI/ML Engineers. Learn Python, machine learning, deep learning, and deploy AI models.">
+  <meta property="og:title" content="AI/ML Engineer Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step guide to becoming an AI/ML Engineer with tools like TensorFlow, PyTorch, and AWS SageMaker.">
+   <link rel="stylesheet" href="explore.css">
+
+</head>
+<body>
+  <header>
+    <h1>AI/ML Engineer Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>🔧 What Is This Role?</h2>
+      <p>
+        AI/ML Engineers build intelligent systems using algorithms that learn from data. They design, train, test, and deploy models for predictions, automation, and decision-making across various domains.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>📈 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Tools / Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📘 Foundation</td>
+              <td>Learn Python, Math (Linear Algebra, Probability, Calculus), and basic ML concepts</td>
+              <td><a href="https://www.coursera.org/learn/machine-learning" target="_blank">Andrew Ng ML Course</a></td>
+            </tr>
+            <tr>
+              <td>⚙️ Tools</td>
+              <td>Practice supervised & unsupervised learning, work on datasets</td>
+              <td>scikit-learn, pandas, NumPy</td>
+            </tr>
+            <tr>
+              <td>🧠 Deep Learning</td>
+              <td>Explore neural networks, CNNs, RNNs, GANs</td>
+              <td>TensorFlow, Keras, PyTorch</td>
+            </tr>
+            <tr>
+              <td>🚀 Deployment</td>
+              <td>Deploy models, monitor performance, use MLOps tools</td>
+              <td>AWS SageMaker, Flask, FastAPI, Docker</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://developers.google.com/machine-learning/crash-course" target="_blank">Google ML Crash Course</a></li>
+        <li><a href="https://www.fast.ai/" target="_blank">Fast.ai Deep Learning Courses</a></li>
+        <li><a href="https://www.udacity.com/course/machine-learning-engineer-nanodegree--nd009t" target="_blank">ML Engineer Nanodegree – Udacity</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🧠 Skills You’ll Need</h2>
+      <ul>
+        <li>Strong Python programming</li>
+        <li>Understanding of ML algorithms & statistics</li>
+        <li>Model evaluation & tuning</li>
+        <li>Deployment & APIs</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>TensorFlow Developer Certificate</li>
+        <li>AWS Certified Machine Learning – Specialty</li>
+        <li>Microsoft Azure AI Engineer</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📝 Summary Card</h3>
+      <p><span class="highlight">Role:</span> AI/ML Engineer</p>
+      <p><span class="highlight">Start With:</span> Python and math fundamentals</p>
+      <p><span class="highlight">Build:</span> ML and DL models, deploy using Flask or FastAPI</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://scikit-learn.org/" target="_blank">scikit-learn</a></p>
+    </div>
+    <h1 id="careerTitle">AIML Engineer</h1>
+
+   <div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>

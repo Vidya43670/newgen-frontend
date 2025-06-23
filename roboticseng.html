@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Robotics Engineer Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring Robotics Engineers. Learn control systems, programming, and integration of hardware/software systems.">
+  <meta property="og:title" content="Robotics Engineer Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step guide to becoming a Robotics Engineer with skills in mechanical systems, electronics, and AI.">
+  <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>Robotics Engineer Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>🔧 What Is This Role?</h2>
+      <p>
+        Robotics Engineers design, build, and maintain robots and robotic systems. They integrate mechanical, electrical, and software engineering to automate tasks and solve real-world problems.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>📈 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Tools / Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📘 Foundation</td>
+              <td>Learn physics, calculus, basic electronics, and programming</td>
+              <td>Python, C++, Arduino, Raspberry Pi</td>
+            </tr>
+            <tr>
+              <td>⚙️ Core Skills</td>
+              <td>Understand mechanics, sensors, microcontrollers, and control theory</td>
+              <td>ROS, MATLAB, SolidWorks, Simulink</td>
+            </tr>
+            <tr>
+              <td>🧠 Build</td>
+              <td>Develop projects with robotic arms, autonomous vehicles, or drones</td>
+              <td>Gazebo, OpenCV, LIDAR, SLAM</td>
+            </tr>
+            <tr>
+              <td>🚀 Advance</td>
+              <td>Integrate AI, computer vision, and machine learning into robotics</td>
+              <td>TensorFlow, PyTorch, ROS 2</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://www.edx.org/professional-certificate/columbiax-robotics" target="_blank">ColumbiaX Robotics Program – edX</a></li>
+        <li><a href="https://www.coursera.org/specializations/robotics" target="_blank">Robotics Specialization – Coursera</a></li>
+        <li><a href="https://www.udemy.com/course/robotics-learn-by-building/" target="_blank">Robotics: Learn by Building – Udemy</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🧠 Skills You’ll Need</h2>
+      <ul>
+        <li>Embedded systems & sensors</li>
+        <li>Control systems & actuators</li>
+        <li>Robot Operating System (ROS)</li>
+        <li>Computer vision & perception</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Certified Robotics Programmer (Fanuc, KUKA, etc.)</li>
+        <li>ROS Developer Certificate – The Construct</li>
+        <li>National Instruments Certification</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📝 Summary Card</h3>
+      <p><span class="highlight">Role:</span> Robotics Engineer</p>
+      <p><span class="highlight">Start With:</span> Python, electronics, and Arduino projects</p>
+      <p><span class="highlight">Build:</span> Control robotic systems and apply computer vision</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://www.robotigniteacademy.com/" target="_blank">Robot Ignite Academy</a></p>
+    </div>
+
+    <h1 id="careerTitle">Robotics Engineer</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>
+
+
+

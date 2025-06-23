@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Learning Metrics Specialist Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring Learning Metrics Specialists. Focus on educational analytics, impact evaluation, and data-driven strategies.">
+  <meta property="og:title" content="Learning Metrics Specialist Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step guide to becoming a Learning Metrics Specialist, with emphasis on learning analytics, assessment strategies, and education impact tracking.">
+ <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>Learning Metrics Specialist Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>📘 What Is This Role?</h2>
+      <p>
+        A Learning Metrics Specialist focuses on measuring and evaluating the effectiveness of learning experiences, programs, and policies. They use data to assess learner outcomes, engagement, and progress to inform decisions in educational institutions and EdTech platforms.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>📈 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Examples / Topics</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📘 Foundation</td>
+              <td>Understand basics of education systems, assessment strategies, and learning models</td>
+              <td>Bloom’s Taxonomy, Learning Objectives, Basic Statistics</td>
+            </tr>
+            <tr>
+              <td>📚 Analytics & Data</td>
+              <td>Develop skills in learning analytics, data visualization, and impact measurement</td>
+              <td>LMS Data, Dashboards, Learning Record Stores</td>
+            </tr>
+            <tr>
+              <td>🧠 Advanced Tools</td>
+              <td>Use advanced tools and methodologies to evaluate learner progress and performance</td>
+              <td>Power BI, Python, R, Tableau, SPSS</td>
+            </tr>
+            <tr>
+              <td>🏫 Implementation</td>
+              <td>Collaborate with educators and stakeholders to improve curriculum through evidence-based insights</td>
+              <td>Data-Driven Feedback, Continuous Improvement Models</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://www.edx.org/course/learning-analytics" target="_blank">Learning Analytics - edX</a></li>
+        <li><a href="https://www.coursera.org/specializations/learning-analytics" target="_blank">Learning Analytics Specialization - Coursera</a></li>
+        <li><a href="https://analyticsineducation.org" target="_blank">Analytics in Education</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🧠 Skills You’ll Need</h2>
+      <ul>
+        <li>Statistical analysis & data interpretation</li>
+        <li>Learning management systems (LMS)</li>
+        <li>Reporting and visualization tools</li>
+        <li>Understanding of pedagogy and curriculum design</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Certifications in Learning Analytics or Educational Data Science</li>
+        <li>Workshops on Assessment and Evaluation in Education</li>
+        <li>EdTech Analytics bootcamps</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📝 Summary Card</h3>
+      <p><span class="highlight">Role:</span> Learning Metrics Specialist</p>
+      <p><span class="highlight">Start With:</span> Educational principles and basic data literacy</p>
+      <p><span class="highlight">Build:</span> Competence in data tools and evaluation frameworks</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://learninganalytics.net" target="_blank">Explore LearningAnalytics.net</a></p>
+    </div>
+
+    <h1 id="careerTitle">Learning Metrics Specialist</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>
+
+

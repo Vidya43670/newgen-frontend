@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Academic Counsellor Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring Academic Counsellors. Learn about student advising, educational psychology, and academic planning.">
+  <meta property="og:title" content="Academic Counsellor Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step guide to becoming an Academic Counsellor focusing on student development, guidance, and career support.">
+  <link rel="stylesheet" href="explore.css">
+   
+
+</head>
+<body>
+  <header>
+    <h1>Academic Counsellor Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>📘 What Is This Role?</h2>
+      <p>
+        An Academic Counsellor helps students understand their educational options, make academic plans, and overcome obstacles that may hinder academic success. They play a key role in student retention, development, and career readiness.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>📈 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Examples / Topics</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>🎓 Foundation</td>
+              <td>Earn a degree in education, psychology, or counseling</td>
+              <td>B.Ed, BA/BSc in Psychology, MSW</td>
+            </tr>
+            <tr>
+              <td>📚 Core Skills</td>
+              <td>Develop knowledge in academic advising, mental health basics, and communication</td>
+              <td>Student Counseling, Academic Planning, Communication Skills</td>
+            </tr>
+            <tr>
+              <td>🔍 Practice</td>
+              <td>Gain experience in school/university environments, intern with counselors</td>
+              <td>Peer Mentoring, School Counseling Internships</td>
+            </tr>
+            <tr>
+              <td>📈 Advance</td>
+              <td>Pursue specialization, join professional associations, attend training</td>
+              <td>Career Counseling Certification, NACADA Membership</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://nacada.ksu.edu/Resources.aspx" target="_blank">NACADA - Academic Advising Resources</a></li>
+        <li><a href="https://www.coursera.org/learn/career-planning" target="_blank">Career Planning – Coursera</a></li>
+        <li><a href="https://www.edx.org/course/academic-and-career-advising" target="_blank">Academic & Career Advising – edX</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🧠 Skills You’ll Need</h2>
+      <ul>
+        <li>Empathy & active listening</li>
+        <li>Educational psychology knowledge</li>
+        <li>Effective communication</li>
+        <li>Problem-solving and planning</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Certified Academic Counselor (CAC)</li>
+        <li>Diploma in Student Counseling</li>
+        <li>Mental Health First Aid Training</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📝 Summary Card</h3>
+      <p><span class="highlight">Role:</span> Academic Counsellor</p>
+      <p><span class="highlight">Start With:</span> Educational or Psychology background</p>
+      <p><span class="highlight">Build:</span> Counseling and planning expertise</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://nacada.ksu.edu/" target="_blank">Explore NACADA Resources</a></p>
+    </div>
+ <h1 id="careerTitle">Academic Counsellor </h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+   <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+  </div>
+</body>
+</html>

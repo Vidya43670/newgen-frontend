@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Social Justice Lawyer Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring Social Justice Lawyers. Learn legal rights, public advocacy, and social reform mechanisms.">
+  <meta property="og:title" content="Social Justice Lawyer Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step guide to becoming a Social Justice Lawyer who defends civil rights, tackles inequality, and influences policy.">
+  <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>Social Justice Lawyer Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>🌍 What Is This Role?</h2>
+      <p>
+        Social Justice Lawyers advocate for marginalized communities and fight for systemic change in areas like civil rights, environmental justice, prison reform, and equality laws. They may work in NGOs, public interest law firms, or as independent litigators.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>📈 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Tools / Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📘 Foundation</td>
+              <td>Earn a law degree and study human rights law, constitutional law, and legal ethics</td>
+              <td>LL.B/LL.M, Public Law courses, Legal Aid work</td>
+            </tr>
+            <tr>
+              <td>🔍 Advocacy Skills</td>
+              <td>Develop litigation, negotiation, and public policy drafting skills</td>
+              <td>Moot courts, internships at NGOs, court observations</td>
+            </tr>
+            <tr>
+              <td>🤝 Field Work</td>
+              <td>Engage in grassroots movements and legal outreach for vulnerable communities</td>
+              <td>Amnesty International, ACLU, CRY, or community legal centers</td>
+            </tr>
+            <tr>
+              <td>🚀 Impact</td>
+              <td>File public interest litigations (PILs), publish legal commentaries, and influence legal reforms</td>
+              <td>Legal journals, human rights litigation, law commissions</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://www.humanrightscareers.com/courses/" target="_blank">Human Rights Courses</a></li>
+        <li><a href="https://pldindia.org/" target="_blank">PLD India</a></li>
+        <li><a href="https://www.coursera.org/learn/international-human-rights-law" target="_blank">Coursera – Human Rights Law</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🧠 Skills You’ll Need</h2>
+      <ul>
+        <li>Legal writing & advocacy</li>
+        <li>Knowledge of civil, constitutional, and human rights law</li>
+        <li>Empathy and social awareness</li>
+        <li>Policy analysis & activism</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Diploma in Human Rights Law</li>
+        <li>Advanced Advocacy Training Programs</li>
+        <li>Courses on Public Interest Litigation</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📝 Summary Card</h3>
+      <p><span class="highlight">Role:</span> Social Justice Lawyer</p>
+      <p><span class="highlight">Start With:</span> Law degree and public law basics</p>
+      <p><span class="highlight">Build:</span> Litigation and grassroots advocacy experience</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://pldindia.org/" target="_blank">Engage with PLD India</a></p>
+    </div>
+
+    <h1 id="careerTitle">Social Justice Lawyer</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>
+
+
+

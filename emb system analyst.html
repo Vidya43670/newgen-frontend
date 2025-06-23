@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Embedded Systems Analyst Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring Embedded Systems Analysts. Learn microcontrollers, C/C++, RTOS, and real-time development tools.">
+  <meta property="og:title" content="Embedded Systems Analyst Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step guide to becoming an Embedded Systems Analyst with tools like STM32, FreeRTOS, and JTAG.">
+  
+    <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>Embedded Systems Analyst Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>🔧 What Is This Role?</h2>
+      <p>
+        Embedded Systems Analysts design, develop, and troubleshoot integrated hardware-software systems used in electronics, IoT, robotics, and real-time devices.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>📈 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Tools / Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📘 Foundation</td>
+              <td>Learn C/C++, microcontrollers, and digital logic</td>
+              <td><a href="https://www.learn-c.org/" target="_blank">Learn-C.org</a></td>
+            </tr>
+            <tr>
+              <td>⚙️ Tools</td>
+              <td>Work with embedded OS, hardware interfaces, real-time systems</td>
+              <td>ARM Cortex, UART, I2C, SPI, FreeRTOS</td>
+            </tr>
+            <tr>
+              <td>🧪 Projects</td>
+              <td>Develop real-time systems: sensors, motors, device drivers</td>
+              <td>Raspberry Pi, STM32, Arduino IDE</td>
+            </tr>
+            <tr>
+              <td>🚀 Advance</td>
+              <td>Debugging, performance tuning, and embedded security</td>
+              <td>JTAG, Keil uVision, Secure Boot, Logic Analyzers</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://nptel.ac.in/courses/108/102/108102045/" target="_blank">NPTEL – Intro to Embedded Systems</a></li>
+        <li><a href="https://www.coursera.org/specializations/embedded-systems" target="_blank">Embedded Systems Specialization – Coursera</a></li>
+        <li><a href="https://docs.rust-embedded.org/book/" target="_blank">The Embedded Rust Book</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🧠 Skills You’ll Need</h2>
+      <ul>
+        <li>C/C++ and Assembly (optional)</li>
+        <li>Microcontroller & RTOS understanding</li>
+        <li>Electronics & hardware debugging</li>
+        <li>Real-time systems development</li>
+        <li>Low-power and embedded security concerns</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Arm Accredited Engineer (AAE)</li>
+        <li>Certified IoT Professional</li>
+        <li>Embedded Systems Programming – Udemy</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📝 Summary Card</h3>
+      <p><span class="highlight">Role:</span> Embedded Systems Analyst</p>
+      <p><span class="highlight">Start With:</span> C programming and microcontroller basics</p>
+      <p><span class="highlight">Build:</span> Projects using STM32, Arduino, and RTOS</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://www.freertos.org/" target="_blank">FreeRTOS</a></p>
+    </div>
+
+    <h1 id="careerTitle">Embedded Systems Analyst</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>
+

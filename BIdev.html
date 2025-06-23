@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | BI Developer Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring Business Intelligence Developers. Learn SQL, Power BI, and data modeling techniques.">
+  <meta property="og:title" content="Business Intelligence Developer Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step guide to becoming a Business Intelligence Developer using tools like Power BI, Tableau, SQL, and more.">
+ <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>Business Intelligence Developer Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>📊 What Is This Role?</h2>
+      <p>
+        A Business Intelligence (BI) Developer builds dashboards, reports, and visualizations to help organizations make data-driven decisions. They translate raw data into actionable insights.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>🚀 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Tools / Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📘 Foundation</td>
+              <td>Understand databases, SQL basics, and business context</td>
+              <td><a href="https://youtu.be/HXV3zeQKqGY" target="_blank">SQL for Beginners – YouTube</a></td>
+            </tr>
+            <tr>
+              <td>📊 Tools</td>
+              <td>Learn BI tools and data modeling techniques</td>
+              <td>Power BI, Tableau, Excel, Looker</td>
+            </tr>
+            <tr>
+              <td>🧠 Build</td>
+              <td>Create reports, dashboards, and KPIs for real-world scenarios</td>
+              <td>Power BI Service, Tableau Public</td>
+            </tr>
+            <tr>
+              <td>🚀 Advance</td>
+              <td>Optimize queries, build data pipelines, work with APIs</td>
+              <td>Azure Data Factory, SQL Server, DAX</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://youtu.be/HXV3zeQKqGY" target="_blank">SQL Tutorial – freeCodeCamp</a></li>
+        <li><a href="https://www.youtube.com/playlist?list=PL2jykFOD1AWZqHRP1Egr6KJdp92gkAX5P" target="_blank">Power BI Tutorials – Guy in a Cube</a></li>
+        <li><a href="https://www.coursera.org/learn/data-visualization-tableau" target="_blank">Tableau Course – Coursera</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🛠 Skills You’ll Need</h2>
+      <ul>
+        <li>SQL & relational databases</li>
+        <li>Power BI or Tableau</li>
+        <li>DAX / data modeling</li>
+        <li>Data storytelling & business acumen</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Microsoft Certified: Power BI Data Analyst Associate</li>
+        <li>Tableau Desktop Specialist</li>
+        <li>Google Data Analytics Certificate</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📌 Summary Card</h3>
+      <p><span class="highlight">Role:</span> Business Intelligence Developer</p>
+      <p><span class="highlight">Start With:</span> SQL, Power BI basics</p>
+      <p><span class="highlight">Build:</span> Reports and dashboards with real business data</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://powerbi.microsoft.com/" target="_blank">Power BI Platform</a></p>
+    </div>
+
+     <h1 id="careerTitle">Business Intelligence Developer</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>

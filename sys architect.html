@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | System's Architect Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring Systems Architects. Learn architecture principles, cloud design, scalability, and system integration.">
+  <meta property="og:title" content="Systems Architect Roadmap - Newgen">
+  <meta property="og:description" content="Explore the roadmap to become a Systems Architect with key skills, tools, and learning resources.">
+<link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>System's Architect Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>🔧 What Is This Role?</h2>
+      <p>
+        A Systems Architect designs the structure of complex systems, ensuring they are scalable, secure, and meet both technical and business requirements. They work across teams to define architecture patterns and technology strategies.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>📈 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Tools / Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📘 Foundation</td>
+              <td>Understand software engineering principles, networking, and system design</td>
+              <td><a href="https://www.youtube.com/watch?v=Re3AylZ3U6U" target="_blank">System Design Basics – Gaurav Sen</a></td>
+            </tr>
+            <tr>
+              <td>⚙️ Design Skills</td>
+              <td>Learn architecture patterns, scalability, fault tolerance</td>
+              <td>Microservices, Monolith vs. SOA, Load Balancing</td>
+            </tr>
+            <tr>
+              <td>🧠 Tools & Tech</td>
+              <td>Explore infrastructure tools and cloud services</td>
+              <td>AWS, Azure, Kubernetes, Docker</td>
+            </tr>
+            <tr>
+              <td>🚀 Strategic Thinking</td>
+              <td>Align systems with business goals, cost optimization</td>
+              <td>TOGAF, UML, Decision Trees</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://www.udemy.com/course/software-architecture/" target="_blank">Software Architecture – Udemy</a></li>
+        <li><a href="https://www.edx.org/learn/software-architecture" target="_blank">Software Architecture – edX</a></li>
+        <li><a href="https://roadmap.sh/software-architect" target="_blank">Software Architect Roadmap – roadmap.sh</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🧠 Skills You’ll Need</h2>
+      <ul>
+        <li>System Design and Architecture</li>
+        <li>Networking and Security Principles</li>
+        <li>Cloud Platforms & DevOps Tools</li>
+        <li>Stakeholder Communication & Leadership</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>TOGAF Certified Architect</li>
+        <li>AWS Certified Solutions Architect</li>
+        <li>Azure Solutions Architect Expert</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📝 Summary Card</h3>
+      <p><span class="highlight">Role:</span> Systems Architect</p>
+      <p><span class="highlight">Start With:</span> System design basics and network architecture</p>
+      <p><span class="highlight">Build:</span> Design scalable, secure, and cost-effective systems</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://aws.amazon.com/architecture/" target="_blank">AWS Architecture Center</a></p>
+    </div>
+
+     <h1 id="careerTitle">Systems Architect</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>
+
+
+

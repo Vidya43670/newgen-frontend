@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Product Developer Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring Product Developers. Learn product lifecycle, prototyping, and market analysis.">
+  <meta property="og:title" content="Product Developer Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step guide to becoming a Product Developer with skills in prototyping, market research, and user testing.">
+ <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>Product Developer Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>🔧 What Is This Role?</h2>
+      <p>
+        Product Developers are responsible for turning ideas into tangible products. They work on product design, prototyping, testing, and aligning development with user needs and market trends.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>📈 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Tools / Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📘 Foundation</td>
+              <td>Understand product lifecycle, market research, and user needs</td>
+              <td>Design Thinking, Lean Startup, Competitive Analysis</td>
+            </tr>
+            <tr>
+              <td>⚙️ Tools</td>
+              <td>Explore tools for prototyping and user feedback</td>
+              <td>Figma, Adobe XD, Balsamiq, UsabilityHub</td>
+            </tr>
+            <tr>
+              <td>🧠 Build</td>
+              <td>Create MVPs, test concepts, and gather feedback iteratively</td>
+              <td>Rapid Prototyping, User Interviews, Surveys</td>
+            </tr>
+            <tr>
+              <td>🚀 Advance</td>
+              <td>Collaborate with product managers, marketing, and developers</td>
+              <td>Agile, Jira, A/B Testing, Roadmapping</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://www.coursera.org/learn/uva-darden-design-thinking-innovation" target="_blank">Design Thinking – Coursera</a></li>
+        <li><a href="https://www.interaction-design.org/courses/" target="_blank">Interaction Design Foundation Courses</a></li>
+        <li><a href="https://www.udemy.com/course/product-management/" target="_blank">Product Management 101 – Udemy</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🧠 Skills You’ll Need</h2>
+      <ul>
+        <li>User Research</li>
+        <li>Wireframing & Prototyping</li>
+        <li>Agile Methodologies</li>
+        <li>Communication & Collaboration</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Certified Scrum Product Owner (CSPO)</li>
+        <li>Google UX Design Certificate</li>
+        <li>Professional Product Manager Certificate</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📝 Summary Card</h3>
+      <p><span class="highlight">Role:</span> Product Developer</p>
+      <p><span class="highlight">Start With:</span> Understanding user needs and product lifecycle</p>
+      <p><span class="highlight">Build:</span> MVPs and prototypes with feedback loops</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://www.figma.com/" target="_blank">Figma</a></p>
+    </div>
+
+    <h1 id="careerTitle">Product Developer</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>
+
+
+

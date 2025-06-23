@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Curriculum Analyst Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring Curriculum Analysts. Learn educational research, data-driven analysis, and curriculum development.">
+  <meta property="og:title" content="Curriculum Analyst Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step guide to becoming a Curriculum Analyst with focus on assessment tools, standards alignment, and educational outcomes.">
+ <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>Curriculum Analyst Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>📘 What Is This Role?</h2>
+      <p>
+        A Curriculum Analyst evaluates and designs educational curricula by applying research, data analysis, and academic standards to improve student outcomes and teaching effectiveness.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>📈 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Examples / Topics</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📘 Foundation</td>
+              <td>Gain knowledge in educational theories and assessment strategies</td>
+              <td>Learning Models, Pedagogy, Bloom’s Taxonomy</td>
+            </tr>
+            <tr>
+              <td>📚 Skills Development</td>
+              <td>Learn data analysis tools and curriculum development frameworks</td>
+              <td>Excel, Tableau, ADDIE, UDL</td>
+            </tr>
+            <tr>
+              <td>🔍 Real-World Application</td>
+              <td>Analyze existing curricula and align them with state/national standards</td>
+              <td>Gap Analysis, Standards Mapping</td>
+            </tr>
+            <tr>
+              <td>🧠 Advance</td>
+              <td>Consult with institutions, lead curriculum audits, and publish findings</td>
+              <td>Education Policy, Academic Journals</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://learningdesigner.org/" target="_blank">Learning Designer Toolkit</a></li>
+        <li><a href="https://www.edx.org/course/instructional-design" target="_blank">Instructional Design - edX</a></li>
+        <li><a href="https://datawise.withgoogle.com/" target="_blank">Google for Education - Data Wise</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🧠 Skills You’ll Need</h2>
+      <ul>
+        <li>Curriculum development</li>
+        <li>Educational research and data interpretation</li>
+        <li>Standard alignment and assessment literacy</li>
+        <li>Analytical and reporting skills</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Master’s in Education or Curriculum & Instruction</li>
+        <li>Certification in Instructional Design or Data Analysis</li>
+        <li>Workshops from education boards or councils</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📝 Summary Card</h3>
+      <p><span class="highlight">Role:</span> Curriculum Analyst</p>
+      <p><span class="highlight">Start With:</span> Education theory and teaching models</p>
+      <p><span class="highlight">Build:</span> Data and research-based curriculum evaluation skills</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://learningdesigner.org/" target="_blank">Use the Learning Designer</a></p>
+    </div>
+
+     <h1 id="careerTitle">Curriculum Analyst</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>
+

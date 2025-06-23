@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Engineering Manager Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring Engineering Managers. Learn leadership, technical architecture, and people management.">
+  <meta property="og:title" content="Engineering Manager Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step guide to becoming an Engineering Manager with focus on leadership, agile practices, and team growth.">
+ <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>Engineering Manager Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>🔧 What Is This Role?</h2>
+      <p>
+        Engineering Managers lead software engineering teams, focusing on delivering high-quality products while mentoring developers, managing projects, and aligning with business goals.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>📈 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Tools / Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📘 Foundation</td>
+              <td>Solid engineering background, systems design, agile practices</td>
+              <td>Leetcode, System Design Primer, Scrum</td>
+            </tr>
+            <tr>
+              <td>🧑‍🤝‍🧑 Team</td>
+              <td>People management, 1:1s, performance reviews, hiring</td>
+              <td>15Five, Lattice, Greenhouse</td>
+            </tr>
+            <tr>
+              <td>🛠 Strategy</td>
+              <td>Roadmapping, tech debt management, scaling teams</td>
+              <td>Jira, Notion, Linear, Confluence</td>
+            </tr>
+            <tr>
+              <td>🚀 Lead</td>
+              <td>Cross-functional collaboration, stakeholder alignment, mentoring</td>
+              <td>OKRs, Tech talks, Retrospectives</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://www.coursera.org/learn/leadership-communication" target="_blank">Leadership Communication – Coursera</a></li>
+        <li><a href="https://leaddev.com/" target="_blank">LeadDev Community & Articles</a></li>
+        <li><a href="https://www.pluralsight.com/paths/becoming-a-software-engineering-manager" target="_blank">Pluralsight: Becoming a Manager</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🧠 Skills You’ll Need</h2>
+      <ul>
+        <li>Strong technical foundation (coding, architecture)</li>
+        <li>Leadership & communication</li>
+        <li>Project & people management</li>
+        <li>Strategic thinking</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Certified Scrum Master</li>
+        <li>Project Management Professional (PMP)</li>
+        <li>Engineering Management Institute Training</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📝 Summary Card</h3>
+      <p><span class="highlight">Role:</span> Engineering Manager</p>
+      <p><span class="highlight">Start With:</span> Strong engineering and agile foundations</p>
+      <p><span class="highlight">Grow Into:</span> People leadership and strategic planning</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://leaddev.com/" target="_blank">LeadDev Resources</a></p>
+    </div>
+
+     <h1 id="careerTitle">Engineering Manager</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>
+

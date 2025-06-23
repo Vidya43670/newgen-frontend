@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Art Director Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring Art Directors. Learn design, leadership, and branding to lead creative teams successfully.">
+  <meta property="og:title" content="Art Director Roadmap - Newgen">
+  <meta property="og:description" content="Explore a step-by-step beginner-friendly guide to becoming an Art Director with tools, certifications, and learning resources.">
+ <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>Art Director</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>💡 What Is This Role?</h2>
+      <p>
+        An Art Director leads the visual design direction for creative projects—ensuring consistency across branding, marketing, advertising, and user experience while guiding a team of designers and creatives.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>🚀 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Tools / Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📘 Foundation</td>
+              <td>Learn graphic design basics, color theory, typography</td>
+              <td>Canva, Adobe Illustrator, Figma</td>
+            </tr>
+            <tr>
+              <td>🎯 Intermediate</td>
+              <td>Practice branding, layout design, team collaboration</td>
+              <td><a href="https://www.youtube.com/watch?v=wFgqTv5HH9Q" target="_blank">How to Art Direct - Adobe Creative Cloud</a></td>
+            </tr>
+            <tr>
+              <td>🧑‍🎨 Portfolio Phase</td>
+              <td>Create mock campaigns and case studies for clients</td>
+              <td>Behance, Adobe Express, Dribbble</td>
+            </tr>
+            <tr>
+              <td>🧠 Advanced</td>
+              <td>Lead creative strategy, manage creative teams</td>
+              <td>Creative Cloud, InVision, Miro, Trello</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://www.youtube.com/watch?v=wFgqTv5HH9Q" target="_blank">Art Director Tips – Adobe Creative Cloud</a></li>
+        <li><a href="https://www.coursera.org/specializations/graphic-design" target="_blank">Graphic Design Specialization – Coursera</a></li>
+        <li><a href="https://www.futurelearn.com/courses/design-principles" target="_blank">Design Principles – FutureLearn</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🛠 Skills You’ll Need</h2>
+      <ul>
+        <li>Graphic design (Adobe Suite, Figma)</li>
+        <li>Brand strategy and storytelling</li>
+        <li>Team leadership & communication</li>
+        <li>Critical thinking & visual consistency</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Coursera – Graphic Design Specialization</li>
+        <li>Adobe Certified Professional (Photoshop, Illustrator)</li>
+        <li>LinkedIn Learning – Creative Direction Courses</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>✨ Summary Card</h3>
+      <p><span class="highlight">Role:</span> Art Director</p>
+      <p><span class="highlight">Start With:</span> Graphic design basics, color theory</p>
+      <p><span class="highlight">Build:</span> Visual branding projects, campaign mockups</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://www.canva.com/" target="_blank">Design on Canva</a></p>
+    </div>
+    <h1 id="careerTitle">Art Director</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>

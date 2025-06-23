@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Medical Researcher Roadmap</title>
+  <meta name="description" content="Beginner-friendly roadmap to become a Medical Researcher. Learn key steps, tools, and certifications to start a career in medical research.">
+  <meta property="og:title" content="Medical Researcher Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step career path to become a Medical Researcher. Learn about clinical trials, data analysis, certifications, and tools.">
+  <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>Medical Researcher Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>🔬 What Is This Role?</h2>
+      <p>
+        Medical Researchers study diseases, treatments, and health data to improve healthcare outcomes. They design and conduct experiments, analyze data, and publish findings that impact clinical practices and public health.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>🧭 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Tools / Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📘 Foundation</td>
+              <td>Basics of biology, chemistry, and statistics</td>
+              <td>CrashCourse, Khan Academy</td>
+            </tr>
+            <tr>
+              <td>🔬 Training</td>
+              <td>Learn research methodology, ethics, and lab skills</td>
+              <td><a href="https://youtu.be/6HZz6CXpH9s" target="_blank">Intro to Clinical Research – YouTube</a></td>
+            </tr>
+            <tr>
+              <td>📝 Research Phase</td>
+              <td>Conduct research, analyze data, publish papers</td>
+              <td>SPSS, R, PubMed, JAMA</td>
+            </tr>
+            <tr>
+              <td>🎓 Specialize</td>
+              <td>Focus on oncology, neurology, epidemiology, etc.</td>
+              <td>NIH, WHO, ResearchGate</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://www.coursera.org/learn/clinical-research" target="_blank">Clinical Research – Coursera</a></li>
+        <li><a href="https://www.edx.org/course/essential-elements-of-biomedical-research" target="_blank">Biomedical Research – edX</a></li>
+        <li><a href="https://youtu.be/6HZz6CXpH9s" target="_blank">YouTube – Research Basics</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🧠 Skills You’ll Need</h2>
+      <ul>
+        <li>Scientific method & lab safety</li>
+        <li>Data collection & analysis (Excel, R, SPSS)</li>
+        <li>Ethical research practices</li>
+        <li>Academic writing and publishing</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>GCP (Good Clinical Practice)</li>
+        <li>NIH Clinical Research Training</li>
+        <li>CITI Program Certificate</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📝 Summary Card</h3>
+      <p><span class="highlight">Role:</span> Medical Researcher</p>
+      <p><span class="highlight">Start With:</span> Science basics and research methodology</p>
+      <p><span class="highlight">Build:</span> Participate in research projects and publish papers</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://www.ncbi.nlm.nih.gov/pubmed/" target="_blank">Explore PubMed</a></p>
+    </div>
+
+     <h1 id="careerTitle">Medical Researcher</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>
+

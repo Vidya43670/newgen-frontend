@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Creative Director Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring Creative Directors. Learn branding, visual storytelling, leadership, and cross-functional team management.">
+  <meta property="og:title" content="Creative Director Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step guide to becoming a Creative Director with focus on design thinking, team leadership, and campaign development.">
+  <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>Creative Director Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>🎨 What Is This Role?</h2>
+      <p>
+        A Creative Director leads the vision for brand identity, advertising campaigns, and multimedia content creation. They guide design teams, unify visual storytelling, and align creative projects with business goals.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>📈 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Examples / Topics</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>🎓 Foundation</td>
+              <td>Build design fundamentals and visual communication skills</td>
+              <td>Typography, Color Theory, Adobe Creative Suite</td>
+            </tr>
+            <tr>
+              <td>💼 Experience</td>
+              <td>Work on branding projects and creative briefs in team settings</td>
+              <td>Logo Design, Campaign Strategy, UX/UI Principles</td>
+            </tr>
+            <tr>
+              <td>🧠 Strategy</td>
+              <td>Develop leadership, brand vision, and storytelling abilities</td>
+              <td>Creative Direction, Design Thinking, Market Research</td>
+            </tr>
+            <tr>
+              <td>🚀 Lead</td>
+              <td>Direct teams, pitch ideas, and align creative with business</td>
+              <td>Cross-functional Collaboration, Budget Planning, Campaign Management</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://www.behance.net/" target="_blank">Behance Portfolio Inspiration</a></li>
+        <li><a href="https://www.adobe.com/creativecloud.html" target="_blank">Adobe Creative Cloud Tutorials</a></li>
+        <li><a href="https://www.ted.com/playlists/627/talks_for_creative_inspiration" target="_blank">TED Talks on Creativity</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🧠 Skills You’ll Need</h2>
+      <ul>
+        <li>Branding & visual identity</li>
+        <li>Team leadership & communication</li>
+        <li>Creative problem-solving</li>
+        <li>Campaign planning & storytelling</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Graphic Design Specializations (Coursera/LinkedIn)</li>
+        <li>Creative Direction Programs (Domestika/Skillshare)</li>
+        <li>Leadership in Design Thinking (IDEO/Harvard)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📝 Summary Card</h3>
+      <p><span class="highlight">Role:</span> Creative Director</p>
+      <p><span class="highlight">Start With:</span> Graphic and visual design foundations</p>
+      <p><span class="highlight">Build:</span> Brand vision and team management skills</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://www.canva.com/learn/design-portfolio/" target="_blank">Build a Design Portfolio</a></p>
+    </div>
+
+    <h1 id="careerTitle">Creative Director</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Technical Team Lead Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring Technical Team Leads. Learn leadership, project management, and system design skills.">
+  <meta property="og:title" content="Technical Team Lead Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step guide to becoming a Technical Team Lead with core skills in tech leadership, agile, and architecture.">
+  <link rel="stylesheet" href="explore.css">  
+</head>
+<body>
+  <header>
+    <h1>Technical Team Lead Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>🛠 What Is This Role?</h2>
+      <p>
+        A Technical Team Lead guides a team of developers while contributing to coding, architecture, and technical decision-making. They bridge communication between technical and non-technical stakeholders.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>📈 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Tools / Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>👨‍💻 Core Dev</td>
+              <td>Gain expertise in software development, clean code, and system design</td>
+              <td>Git, GitHub, Design Patterns</td>
+            </tr>
+            <tr>
+              <td>📣 Communication</td>
+              <td>Practice team collaboration, documentation, and conflict resolution</td>
+              <td>Slack, Notion, Confluence</td>
+            </tr>
+            <tr>
+              <td>📊 Leadership</td>
+              <td>Guide sprint planning, mentorship, code reviews</td>
+              <td>Jira, Agile boards</td>
+            </tr>
+            <tr>
+              <td>🧭 Strategic</td>
+              <td>Contribute to architectural planning and cross-team communication</td>
+              <td>System Design, Cloud Services</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://www.youtube.com/watch?v=oV9rvDllKEg" target="_blank">What Great Engineering Managers Do – YouTube</a></li>
+        <li><a href="https://www.coursera.org/specializations/leading-teams" target="_blank">Leading Teams Specialization – Coursera</a></li>
+        <li><a href="https://leaddev.com/" target="_blank">LeadDev – Articles & Talks</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🧠 Skills You’ll Need</h2>
+      <ul>
+        <li>Team leadership & mentoring</li>
+        <li>Code quality and reviews</li>
+        <li>Agile methodologies</li>
+        <li>System design & scalability</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Scrum Master Certification</li>
+        <li>Technical Leadership – LinkedIn Learning</li>
+        <li>Software Architecture – Coursera</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📌 Summary Card</h3>
+      <p><span class="highlight">Role:</span> Technical Team Lead</p>
+      <p><span class="highlight">Start With:</span> Strong dev foundation + mentorship</p>
+      <p><span class="highlight">Build:</span> Team workflows, architecture guidance</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://leaddev.com/" target="_blank">LeadDev Resources</a></p>
+    </div>
+
+    <h1 id="careerTitle">Technical Team Lead</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>
+
+
+

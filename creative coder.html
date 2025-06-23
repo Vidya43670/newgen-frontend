@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Creative Coder Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring Creative Coders and Generative Artists. Learn tools like p5.js, Processing, and build interactive digital art.">
+  <meta property="og:title" content="Creative Coder Roadmap - Newgen">
+  <meta property="og:description" content="Explore the step-by-step guide to becoming a Creative Coder or Generative Artist with tools, certifications, and resources.">
+  <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>Creative Coder / Generative Artist</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>💡 What Is This Role?</h2>
+      <p>
+        Creative Coders and Generative Artists use programming as a tool for creative expression — building interactive visuals, dynamic digital art, and immersive experiences.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>🚀 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Tools / Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📘 Foundation</td>
+              <td>Learn programming basics, visual design principles</td>
+              <td>p5.js, Processing</td>
+            </tr>
+            <tr>
+              <td>🎯 Intermediate</td>
+              <td>Explore generative art, randomness, interaction</td>
+              <td><a href="https://www.youtube.com/c/TheCodingTrain" target="_blank">The Coding Train</a></td>
+            </tr>
+            <tr>
+              <td>🧑‍🎨 Portfolio Phase</td>
+              <td>Build and showcase your projects publicly</td>
+              <td>GitHub, Behance, OpenProcessing</td>
+            </tr>
+            <tr>
+              <td>🧠 Advanced</td>
+              <td>3D graphics, AI-generated art, freelancing</td>
+              <td>Three.js, WebGL, DALL·E, RunwayML</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://www.youtube.com/playlist?list=PLRqwX-V7Uu6Zy51Q-x9tMWIv9cueOFTFA" target="_blank">p5.js Crash Course – The Coding Train</a></li>
+        <li><a href="https://www.kadenze.com/courses/creative-applications-of-deep-learning-with-tensorflow/info" target="_blank">Deep Learning in Art – Kadenze</a></li>
+        <li><a href="https://www.coursera.org/learn/generative-art" target="_blank">Generative Art – Coursera</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🛠 Skills You’ll Need</h2>
+      <ul>
+        <li>JavaScript, p5.js, Processing</li>
+        <li>Creative design & UI/UX knowledge</li>
+        <li>Basic math & logic for patterns</li>
+        <li>Presentation & storytelling ability</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Kadenze – Creative Coding Certificates</li>
+        <li>Coursera – Generative Art Specialization</li>
+        <li>Adobe Certified Associate (Photoshop, Illustrator)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>✨ Summary Card</h3>
+      <p><span class="highlight">Role:</span> Creative Coder / Generative Artist</p>
+      <p><span class="highlight">Start With:</span> p5.js, Processing</p>
+      <p><span class="highlight">Build:</span> Visual art projects using code and showcase on GitHub or OpenProcessing</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://editor.p5js.org" target="_blank">p5.js Web Editor</a></p>
+    </div>
+<h1 id="careerTitle">Creative Coder</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+   <script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>

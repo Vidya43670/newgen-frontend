@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Project Manager Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring Project Managers. Learn project planning, team leadership, and software tools like Jira, Asana, and Trello.">
+  <meta property="og:title" content="Project Manager Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step guide to becoming a Project Manager with essential tools, certifications, and learning resources.">
+ <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>Project Manager Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>📌 What Is This Role?</h2>
+      <p>
+        Project Managers are responsible for planning, executing, and closing projects successfully. They coordinate teams, manage timelines and budgets, and ensure project goals are met.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>📈 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Tools / Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>🧱 Foundation</td>
+              <td>Understand project lifecycle, basic leadership, and communication skills</td>
+              <td><a href="https://youtu.be/4NQ3HnhyNfQ" target="_blank">Project Management Basics – Edureka</a></td>
+            </tr>
+            <tr>
+              <td>🛠 Tools</td>
+              <td>Learn how to use project management tools and methodologies</td>
+              <td>Jira, Asana, Trello, MS Project</td>
+            </tr>
+            <tr>
+              <td>📊 Intermediate</td>
+              <td>Manage small teams, apply Agile or Waterfall methodology, set KPIs</td>
+              <td>Scrum, Kanban, OKRs</td>
+            </tr>
+            <tr>
+              <td>🚀 Advanced</td>
+              <td>Oversee large cross-functional projects, stakeholder management, risk mitigation</td>
+              <td>SAFe, Lean Six Sigma, PMP</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://www.coursera.org/specializations/project-management" target="_blank">Project Management Specialization – Coursera</a></li>
+        <li><a href="https://www.edx.org/professional-certificate/ritx-project-management" target="_blank">Project Management – edX (RIT)</a></li>
+        <li><a href="https://www.simplilearn.com/project-management-certification-training-pmp" target="_blank">PMP Certification – Simplilearn</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🧠 Skills You’ll Need</h2>
+      <ul>
+        <li>Leadership & team management</li>
+        <li>Communication & negotiation</li>
+        <li>Scheduling & budgeting</li>
+        <li>Project management software proficiency</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Certified Associate in Project Management (CAPM)</li>
+        <li>Project Management Professional (PMP)</li>
+        <li>Scrum Master Certification</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📝 Summary Card</h3>
+      <p><span class="highlight">Role:</span> Project Manager</p>
+      <p><span class="highlight">Start With:</span> Basic project lifecycle and communication skills</p>
+      <p><span class="highlight">Build:</span> Manage teams and track progress using tools like Trello or Jira</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://trello.com/" target="_blank">Trello</a></p>
+    </div>
+
+    <h1 id="careerTitle">Project Manager</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>
+
+
+

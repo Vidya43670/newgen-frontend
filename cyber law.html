@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Cyber Law Expert Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring Cyber Law Experts. Understand legal frameworks, digital rights, and data protection laws.">
+  <meta property="og:title" content="Cyber Law Expert Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step guide to becoming a Cyber Law Expert focusing on cybersecurity legislation and digital legal practice.">
+  <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>Cyber Law Expert Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>🔧 What Is This Role?</h2>
+      <p>
+        A Cyber Law Expert specializes in the intersection of law and technology. They focus on issues like digital privacy, cybersecurity regulations, cybercrime legislation, and data protection compliance.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>📈 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Tools / Resources</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📘 Foundation</td>
+              <td>Understand constitutional & criminal law, internet basics, and legal systems</td>
+              <td>Indian IT Act, GDPR, Cybersecurity Law Handbook</td>
+            </tr>
+            <tr>
+              <td>⚙️ Specialization</td>
+              <td>Study cyber law topics like cybercrime, digital rights, IP law, and online dispute resolution</td>
+              <td>NALSAR Cyber Law courses, WIPO IP resources</td>
+            </tr>
+            <tr>
+              <td>🧠 Practice</td>
+              <td>Intern with law firms or legal tech companies; work on real-world digital rights cases</td>
+              <td>Internshala, VakilSearch, Legaltech platforms</td>
+            </tr>
+            <tr>
+              <td>🚀 Advance</td>
+              <td>Lead cyber law policy formation, compliance audits, and corporate advisory</td>
+              <td>ISO/IEC 27001, LegalTech software</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://nalsarpro.org/cyber-laws" target="_blank">NALSAR Cyber Law Course</a></li>
+        <li><a href="https://www.wipo.int/about-ip/en/" target="_blank">WIPO IP Learning Resources</a></li>
+        <li><a href="https://www.coursera.org/learn/cybersecurity-law" target="_blank">Cybersecurity and the Law – Coursera</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🧠 Skills You’ll Need</h2>
+      <ul>
+        <li>Legal writing & interpretation</li>
+        <li>Cybersecurity concepts</li>
+        <li>Understanding of international tech regulations</li>
+        <li>Analytical & advisory abilities</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Certified Information Privacy Professional (CIPP)</li>
+        <li>PG Diploma in Cyber Law (NALSAR, NLU Delhi)</li>
+        <li>ISO/IEC 27001 Lead Auditor</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📝 Summary Card</h3>
+      <p><span class="highlight">Role:</span> Cyber Law Expert</p>
+      <p><span class="highlight">Start With:</span> Constitution, criminal law, internet fundamentals</p>
+      <p><span class="highlight">Build:</span> Cybercrime & IP law knowledge; hands-on experience</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://nalsarpro.org/cyber-laws" target="_blank">NALSAR Cyber Law Course</a></p>
+    </div>
+
+   
+     <h1 id="careerTitle">Cyber Law Expert</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>
+

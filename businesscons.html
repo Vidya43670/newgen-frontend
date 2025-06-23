@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Business Consultant Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring Business Consultants. Learn business strategy, communication, data analysis, and industry tools.">
+  <meta property="og:title" content="Business Consultant Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step guide to becoming a Business Consultant with key skills, tools, and courses.">
+ <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>Business Consultant Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>🔧 What Is This Role?</h2>
+      <p>
+        Business Consultants analyze business problems, develop strategies, and advise companies on how to improve performance, profitability, and efficiency. They bridge technical, financial, and management perspectives.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>📈 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Tools / Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📘 Foundation</td>
+              <td>Learn business fundamentals, market research, and analytical thinking</td>
+              <td>Harvard Business School Online, Business Model Canvas</td>
+            </tr>
+            <tr>
+              <td>⚙️ Tools</td>
+              <td>Develop skills in Excel, PowerPoint, SWOT, and financial modeling</td>
+              <td>Google Sheets, Tableau, MS Excel, Lucidchart</td>
+            </tr>
+            <tr>
+              <td>🧠 Build</td>
+              <td>Work on real-world case studies, client interaction, and stakeholder management</td>
+              <td>Consulting simulations, mock projects, management tools</td>
+            </tr>
+            <tr>
+              <td>🚀 Advance</td>
+              <td>Lead strategic initiatives, specialize in an industry, or pursue MBA</td>
+              <td>McKinsey Case Studies, BCG, Bain resources</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://www.coursera.org/specializations/consulting" target="_blank">Consulting Specialization – Coursera</a></li>
+        <li><a href="https://www.strategyand.pwc.com/gx/en/insights.html" target="_blank">PwC Strategy Insights</a></li>
+        <li><a href="https://www.managementconsulted.com/" target="_blank">ManagementConsulted</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🧠 Skills You’ll Need</h2>
+      <ul>
+        <li>Strategic thinking</li>
+        <li>Client communication</li>
+        <li>Financial analysis</li>
+        <li>Problem solving & presentation</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Certified Management Consultant (CMC)</li>
+        <li>Business Strategy – Wharton Online</li>
+        <li>Project Management Professional (PMP)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📝 Summary Card</h3>
+      <p><span class="highlight">Role:</span> Business Consultant</p>
+      <p><span class="highlight">Start With:</span> Business fundamentals and case analysis</p>
+      <p><span class="highlight">Build:</span> Client strategies and real-world consulting scenarios</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://strategyzer.com/canvas/business-model-canvas" target="_blank">Business Model Canvas</a></p>
+    </div>
+
+     <h1 id="careerTitle">Business Consultant</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>

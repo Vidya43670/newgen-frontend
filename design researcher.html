@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Design Researcher Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring Design Researchers. Learn user research, design thinking, behavioral science, and prototyping.">
+  <meta property="og:title" content="Design Researcher Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step guide to becoming a Design Researcher focused on user needs, field research, and ideation.">
+  <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>Design Researcher Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>📘 What Is This Role?</h2>
+      <p>
+        A Design Researcher investigates user needs and behaviors to inform design decisions. This role bridges the gap between research and product design by applying methodologies to uncover insights that shape user experiences.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>📈 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Examples / Topics</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>🔍 Foundation</td>
+              <td>Learn human-centered design, basic psychology, and research ethics</td>
+              <td>Design Thinking, UX Basics, Surveys & Interviews</td>
+            </tr>
+            <tr>
+              <td>🧪 Skill Building</td>
+              <td>Practice qualitative & quantitative research, usability testing</td>
+              <td>User Journeys, A/B Testing, Affinity Mapping</td>
+            </tr>
+            <tr>
+              <td>📊 Integration</td>
+              <td>Work with designers, product teams, and analysts</td>
+              <td>Collaborative Workshops, Persona Development</td>
+            </tr>
+            <tr>
+              <td>🧠 Advance</td>
+              <td>Lead research strategy, mentor others, and shape design decisions</td>
+              <td>Research Ops, Strategic Insight Reports</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://www.interaction-design.org/literature/topics/user-research" target="_blank">User Research - Interaction Design Foundation</a></li>
+        <li><a href="https://www.nngroup.com/articles/ux-research-cheat-sheet/" target="_blank">Nielsen Norman Group: UX Research Methods</a></li>
+        <li><a href="https://www.coursera.org/learn/user-experience-research-and-design" target="_blank">UX Research & Design – Coursera</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🧠 Skills You’ll Need</h2>
+      <ul>
+        <li>User research methodologies</li>
+        <li>Data synthesis and storytelling</li>
+        <li>Empathy and observation</li>
+        <li>Stakeholder communication</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Human-Computer Interaction Specialization</li>
+        <li>UX Research certification from Nielsen Norman or IDEO U</li>
+        <li>Master's in Human-Centered Design or Behavioral Science</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📝 Summary Card</h3>
+      <p><span class="highlight">Role:</span> Design Researcher</p>
+      <p><span class="highlight">Start With:</span> Design thinking and user interviews</p>
+      <p><span class="highlight">Build:</span> Testing techniques and strategic insights</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://www.nngroup.com/articles/which-ux-research-methods/" target="_blank">NNGroup’s UX Research Methods</a></p>
+    </div>
+
+     <h1 id="careerTitle">Design Researcher</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>
+

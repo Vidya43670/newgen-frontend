@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Visual Identity Lead Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring Visual Identity Leads. Learn brand aesthetics, design systems, creative leadership, and storytelling.">
+  <meta property="og:title" content="Visual Identity Lead Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step guide to becoming a Visual Identity Lead with focus on branding, strategy, and visual storytelling.">
+ <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>Visual Identity Lead Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>🎨 What Is This Role?</h2>
+      <p>
+        A Visual Identity Lead defines and drives the visual branding of an organization. They oversee brand aesthetics, guide creative assets, and ensure a consistent, emotionally resonant look and feel across all platforms.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>📈 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Examples / Topics</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>🎨 Foundation</td>
+              <td>Learn graphic design, color theory, typography, and brand guidelines</td>
+              <td>Adobe Creative Suite, Brand Basics</td>
+            </tr>
+            <tr>
+              <td>🧠 Strategy</td>
+              <td>Understand user behavior, visual storytelling, and brand psychology</td>
+              <td>Design Thinking, Narrative Design</td>
+            </tr>
+            <tr>
+              <td>💼 Leadership</td>
+              <td>Lead creative teams, develop brand strategy, and maintain design systems</td>
+              <td>Creative Direction, Art Direction</td>
+            </tr>
+            <tr>
+              <td>🚀 Influence</td>
+              <td>Contribute to high-level identity shifts and cross-functional branding efforts</td>
+              <td>Rebranding Projects, Corporate Identity</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://www.coursera.org/learn/graphic-design" target="_blank">Coursera - Graphic Design</a></li>
+        <li><a href="https://99designs.com/blog/tips/visual-brand-identity/" target="_blank">99designs - Visual Brand Identity Guide</a></li>
+        <li><a href="https://www.linkedin.com/learning/brand-strategy" target="_blank">LinkedIn Learning - Brand Strategy</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🧠 Skills You’ll Need</h2>
+      <ul>
+        <li>Design software proficiency</li>
+        <li>Strategic visual thinking</li>
+        <li>Attention to detail & consistency</li>
+        <li>Team leadership & communication</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Graphic Design Certification</li>
+        <li>Brand Strategy Courses</li>
+        <li>Visual Communication Degrees</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📌 Summary Card</h3>
+      <p><span class="highlight">Role:</span> Visual Identity Lead</p>
+      <p><span class="highlight">Start With:</span> Design fundamentals and tools</p>
+      <p><span class="highlight">Build:</span> Brand identity strategy and storytelling</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://99designs.com/blog/tips/visual-brand-identity/" target="_blank">Visual Identity Guide</a></p>
+    </div>
+
+    <h1 id="careerTitle">Visual Identity Lead</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>
+
+
+

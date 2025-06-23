@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Legal Aid Advocate Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring Legal Aid Advocates. Learn legal frameworks, advocacy skills, and public service strategies.">
+  <meta property="og:title" content="Legal Aid Advocate Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step guide to becoming a Legal Aid Advocate focused on justice, rights, and service.">
+  <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>Legal Aid Advocate Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>🔧 What Is This Role?</h2>
+      <p>
+        Legal Aid Advocates provide free or subsidized legal support to underprivileged individuals or communities. They work in public interest, fighting for justice and rights of those who can't afford legal services.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>📈 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Tools / Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>🎓 Education</td>
+              <td>Obtain a law degree (LLB or equivalent) and qualify the bar exam</td>
+              <td>Law schools, Bar Council registration</td>
+            </tr>
+            <tr>
+              <td>🔍 Exposure</td>
+              <td>Intern with NGOs, public defenders, and legal aid societies</td>
+              <td>Internships at legal aid clinics, court practice</td>
+            </tr>
+            <tr>
+              <td>⚖️ Practice</td>
+              <td>Gain experience in family law, civil rights, criminal defense, etc.</td>
+              <td>Legal aid firms, court appearances, PILs</td>
+            </tr>
+            <tr>
+              <td>🌍 Impact</td>
+              <td>Engage in community education, policy advocacy, or rights-based campaigns</td>
+              <td>Legal literacy programs, social justice campaigns</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://www.humanrightsinitiative.org/" target="_blank">Human Rights Initiative</a></li>
+        <li><a href="https://www.nalsa.gov.in/" target="_blank">National Legal Services Authority (India)</a></li>
+        <li><a href="https://www.coursera.org/learn/international-human-rights-law" target="_blank">International Human Rights Law – Coursera</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🧠 Skills You’ll Need</h2>
+      <ul>
+        <li>Legal drafting & litigation</li>
+        <li>Empathy & communication</li>
+        <li>Research on laws and precedents</li>
+        <li>Policy and human rights awareness</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Certified Human Rights Advocate</li>
+        <li>Gender Justice or Child Rights Training</li>
+        <li>Public Policy & Advocacy Certification</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📝 Summary Card</h3>
+      <p><span class="highlight">Role:</span> Legal Aid Advocate</p>
+      <p><span class="highlight">Start With:</span> Law degree and exposure to grassroots legal work</p>
+      <p><span class="highlight">Build:</span> Expertise in legal aid, human rights, and justice delivery</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://www.nalsa.gov.in/" target="_blank">Volunteer with NALSA</a></p>
+    </div>
+<h1 id="careerTitle">Legal Aid Advocate</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>
+

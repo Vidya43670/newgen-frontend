@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Human Factors Analyst Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring Human Factors Analysts. Learn human-centered design, ergonomics, psychology, and usability testing.">
+  <meta property="og:title" content="Human Factors Analyst Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step guide to becoming a Human Factors Analyst with focus on user research, human-computer interaction, and system usability.">
+ <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>Human Factors Analyst Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>📘 What Is This Role?</h2>
+      <p>
+        A Human Factors Analyst focuses on optimizing the interaction between humans and systems. They apply psychology, engineering, and design principles to improve usability, safety, and performance across various industries.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>📈 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Examples / Topics</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📘 Foundation</td>
+              <td>Basics of human psychology, cognitive science, and system design</td>
+              <td>Human cognition, behavior modeling, perception</td>
+            </tr>
+            <tr>
+              <td>🔬 Skill Building</td>
+              <td>Learn ergonomics, usability testing, and interface analysis</td>
+              <td>Task analysis, usability heuristics, HCI principles</td>
+            </tr>
+            <tr>
+              <td>🧪 Practice</td>
+              <td>Apply knowledge in projects, conduct experiments, analyze findings</td>
+              <td>Prototypes, simulations, UX testing reports</td>
+            </tr>
+            <tr>
+              <td>🚀 Advance</td>
+              <td>Work in domains like aerospace, healthcare, or automotive systems</td>
+              <td>Safety systems, cockpit controls, medical interfaces</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://www.hfes.org/" target="_blank">Human Factors and Ergonomics Society (HFES)</a></li>
+        <li><a href="https://www.interaction-design.org/" target="_blank">Interaction Design Foundation</a></li>
+        <li><a href="https://www.coursera.org/learn/human-factors" target="_blank">Human Factors – Coursera</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🧠 Skills You’ll Need</h2>
+      <ul>
+        <li>Cognitive psychology</li>
+        <li>System usability evaluation</li>
+        <li>Interface and interaction analysis</li>
+        <li>Human-centered design methodology</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Certified Professional Ergonomist (CPE)</li>
+        <li>Graduate programs in Human Factors or Ergonomics</li>
+        <li>Certifications from HFES or UX-related platforms</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📝 Summary Card</h3>
+      <p><span class="highlight">Role:</span> Human Factors Analyst</p>
+      <p><span class="highlight">Start With:</span> Basics of psychology and cognitive science</p>
+      <p><span class="highlight">Build:</span> Skills in usability, ergonomics, and system design</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://www.hfes.org/" target="_blank">Explore HFES Resources</a></p>
+    </div>
+
+      <h1 id="careerTitle">Human Factors Analyst</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>
+

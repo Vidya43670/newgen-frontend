@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | EdTech Creator Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring EdTech Creators. Learn educational technology, content creation, pedagogy, and multimedia tools.">
+  <meta property="og:title" content="EdTech Creator Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step guide to becoming an EdTech Creator with a focus on instructional design, digital content, and learner engagement.">
+  
+  <link rel="stylesheet" href="explore.css">
+  
+</head>
+<body>
+  <header>
+    <h1>EdTech Creator Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>🎓 What Is This Role?</h2>
+      <p>
+        An EdTech Creator designs and develops innovative educational technologies and content that enhance learning experiences. This role blends technology, pedagogy, and creativity to build tools, courses, and resources for students, teachers, and institutions.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>📈 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Examples / Topics</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>🎓 Foundation</td>
+              <td>Understand learning theories, instructional design, and digital literacy</td>
+              <td>Bloom's Taxonomy, ADDIE Model, Learning Styles</td>
+            </tr>
+            <tr>
+              <td>🛠️ Tools</td>
+              <td>Learn tools for content creation and LMS platforms</td>
+              <td>Articulate, Canva, Moodle, Adobe Captivate</td>
+            </tr>
+            <tr>
+              <td>🚀 Build</td>
+              <td>Design and deploy interactive courses or learning apps</td>
+              <td>Gamification, Adaptive Learning, E-learning Modules</td>
+            </tr>
+            <tr>
+              <td>🧠 Innovate</td>
+              <td>Experiment with AI, AR/VR, and data-driven learning platforms</td>
+              <td>AI Tutors, Analytics Dashboards, Virtual Labs</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>🔍 Learn from These</h2>
+      <ul>
+        <li><a href="https://www.edx.org/learn/education" target="_blank">EdX Courses in Education</a></li>
+        <li><a href="https://teachonline.ca/tools-trends/online-learning-tools-strategies" target="_blank">TeachOnline.ca</a></li>
+        <li><a href="https://www.classcentral.com/subject/education" target="_blank">Class Central – EdTech Resources</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>💡 Skills You’ll Need</h2>
+      <ul>
+        <li>Instructional Design & Pedagogical Knowledge</li>
+        <li>Multimedia Design & Editing</li>
+        <li>Educational Technology Tools</li>
+        <li>Creativity and User Engagement Strategies</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Certified Instructional Designer (CID)</li>
+        <li>Google Certified Educator / Innovator</li>
+        <li>EdTech Leadership or Digital Learning Certificates</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📝 Summary Card</h3>
+      <p><span class="highlight">Role:</span> EdTech Creator</p>
+      <p><span class="highlight">Start With:</span> Learning pedagogy and digital design</p>
+      <p><span class="highlight">Build:</span> Interactive, engaging learning content</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://h5p.org" target="_blank">Create with H5P</a></p>
+    </div>
+
+    <h1 id="careerTitle">EdTech Creator</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>
+

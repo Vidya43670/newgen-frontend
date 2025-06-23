@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Creative Manager Roadmap</title>
+  <meta name="description" content="Beginner-friendly roadmap to becoming a Creative Manager. Learn design, leadership, and visual storytelling skills.">
+  <meta property="og:title" content="Creative Manager Roadmap - Newgen">
+  <meta property="og:description" content="Explore the step-by-step guide to becoming a Creative Manager with tools, certifications, and resources.">
+
+<link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>Creative Manager</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>💡 What Is This Role?</h2>
+      <p>
+        A Creative Manager or Art Director leads the visual direction of projects in advertising, branding, and media. They combine design, storytelling, and team leadership to bring ideas to life.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>🚀 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>Focus Area</th>
+              <th>Tools / Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📘 Foundation</td>
+              <td>Learn design basics: color, layout, typography</td>
+              <td><a href="https://www.canva.com/colors/color-wheel/" target="_blank">Canva Color Wheel</a></td>
+            </tr>
+            <tr>
+              <td>🎯 Intermediate</td>
+              <td>Master design tools & branding concepts</td>
+              <td>Photoshop, Illustrator, Figma</td>
+            </tr>
+            <tr>
+              <td>🧑‍💼 Management Skills</td>
+              <td>Team coordination, client communication, project leadership</td>
+              <td><a href="https://www.linkedin.com/learning/paths/transitioning-into-leadership" target="_blank">LinkedIn Learning</a></td>
+            </tr>
+            <tr>
+              <td>🧠 Portfolio Phase</td>
+              <td>Build a strong design portfolio across formats</td>
+              <td>Behance, Dribbble, Adobe Portfolio</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📺 Learn with Video</h2>
+      <ul>
+        <li><a href="https://www.youtube.com/watch?v=7FoZVZ2ZMIU" target="_blank">How to Become a Creative Director – Adobe</a></li>
+        <li><a href="https://www.youtube.com/watch?v=aCgkLICTz2s" target="_blank">Tips from a Senior Art Director</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🛠 Skills You’ll Need</h2>
+      <ul>
+        <li>Adobe Creative Suite (Photoshop, Illustrator)</li>
+        <li>Figma, Canva, UX/UI basics</li>
+        <li>Project & team management</li>
+        <li>Visual storytelling & branding</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Adobe Certified Professional – Photoshop / Illustrator</li>
+        <li>Coursera – Graphic Design Specialization</li>
+        <li>Skillshare – Art Direction Courses</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>✨ Summary Card</h3>
+      <p><span class="highlight">Role:</span> Creative Manager / Art Director</p>
+      <p><span class="highlight">Start With:</span> Canva, design theory</p>
+      <p><span class="highlight">Build:</span> Ad creatives, brand campaigns, team-based design</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://www.canva.com/designschool/" target="_blank">Canva Design School</a></p>
+    </div>
+
+    
+    <h1 id="careerTitle">Creative Manager</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>
+

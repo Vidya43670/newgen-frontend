@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | AR/VR Artist Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring AR/VR Artists. Learn immersive storytelling, 3D modeling, and real-time design.">
+  <meta property="og:title" content="AR/VR Artist Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step guide to becoming an AR/VR Artist with focus on creativity, interaction, and digital spaces.">
+  <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>AR/VR Artist Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>🎨 What Is This Role?</h2>
+      <p>
+        An AR/VR Artist designs immersive and interactive digital experiences using technologies like augmented reality (AR) and virtual reality (VR). They blend creativity with technology to create stunning 3D environments and characters for gaming, education, marketing, and more.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>🚀 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Examples / Topics</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>🎓 Foundation</td>
+              <td>Learn fundamentals of design, 3D modeling, and digital art</td>
+              <td>Photoshop, Blender, Maya, Design Principles</td>
+            </tr>
+            <tr>
+              <td>🔧 Build Skills</td>
+              <td>Explore game engines and immersive tech tools</td>
+              <td>Unity, Unreal Engine, Vuforia, ARKit</td>
+            </tr>
+            <tr>
+              <td>📐 Portfolio</td>
+              <td>Create interactive demos and environments</td>
+              <td>3D scenes, character designs, motion interactions</td>
+            </tr>
+            <tr>
+              <td>🌍 Advance</td>
+              <td>Work on industry projects, contribute to AR/VR innovations</td>
+              <td>AR filters, VR storytelling, UX in immersive spaces</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://learn.unity.com/" target="_blank">Unity Learn</a></li>
+        <li><a href="https://www.coursera.org/specializations/virtual-reality" target="_blank">Coursera VR Specialization</a></li>
+        <li><a href="https://www.artstation.com/" target="_blank">ArtStation Portfolio Inspiration</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🧠 Skills You’ll Need</h2>
+      <ul>
+        <li>3D modeling & animation</li>
+        <li>AR/VR interaction design</li>
+        <li>Creativity and storytelling</li>
+        <li>Game engine proficiency</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Certified AR/VR Developer</li>
+        <li>3D Art & Animation courses</li>
+        <li>Unity/Unreal Engine certifications</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>🎯 Summary Card</h3>
+      <p><span class="highlight">Role:</span> AR/VR Artist</p>
+      <p><span class="highlight">Start With:</span> Digital design and 3D tools</p>
+      <p><span class="highlight">Build:</span> Interactive immersive experiences</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://sketchfab.com/" target="_blank">Explore 3D Models on Sketchfab</a></p>
+    </div>
+
+    <h1 id="careerTitle">AR/VR Artist</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>

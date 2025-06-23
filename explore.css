@@ -1,0 +1,164 @@
+ :root {
+      --primary-blue: #0077b6;
+      --light-blue: #d0e8f2;
+      --white: #ffffff;
+      --card-shadow: rgba(0, 0, 0, 0.08);
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #f0f8ff;
+      color: #002b45;
+    }
+
+    header {
+      background-color: var(--primary-blue);
+      padding: 20px;
+      text-align: center;
+      color: white;
+      box-shadow: 0 4px 6px var(--card-shadow);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.2rem;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      background-color: var(--white);
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 6px 14px var(--card-shadow);
+    }
+
+    h2 {
+      color: var(--primary-blue);
+      border-left: 6px solid var(--primary-blue);
+      padding-left: 10px;
+    }
+
+    .section {
+      margin-bottom: 40px;
+      transition: all 0.3s ease;
+    }
+
+    .section:hover {
+      background-color: #f2fbff;
+      border-radius: 10px;
+      padding: 15px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    a {
+      color: var(--primary-blue);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .roadmap-table-container {
+      overflow-x: auto;
+    }
+
+    .roadmap-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    .roadmap-table th,
+    .roadmap-table td {
+      border: 1px solid #b8dfff;
+      padding: 12px;
+      text-align: left;
+    }
+
+    .roadmap-table th {
+      background-color: var(--light-blue);
+      color: #003c5e;
+    }
+
+    .card {
+      background-color: var(--light-blue);
+      border-left: 6px solid var(--primary-blue);
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 30px;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+    }
+
+    .highlight {
+      font-weight: bold;
+      color: #005b88;
+    }
+
+    .back-button {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .back-button a {
+      padding: 12px 24px;
+      background-color: #0077b6;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .back-button a:hover {
+      background-color: #005f90;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.6rem;
+      }
+
+      .container {
+        padding: 20px;
+      }
+
+      .roadmap-table th,
+      .roadmap-table td {
+        font-size: 14px;
+      }
+    }
+    .save-button {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.save-button button {
+  padding: 12px 24px;
+  background-color: var(--primary-blue); /* Newgen blue */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 119, 182, 0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.save-button button:hover {
+  background-color: #005f90; /* Darker blue for hover */
+  transform: translateY(-2px);
+}

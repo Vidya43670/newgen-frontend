@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Data Scientist Roadmap</title>
+  <meta name="description" content="Step-by-step guide to becoming a Data Scientist. Learn Python, statistics, machine learning, and more.">
+  <meta property="og:title" content="Data Scientist Roadmap - Newgen">
+  <meta property="og:description" content="Explore how to become a Data Scientist with tools, certifications, and hands-on project experience.">
+  <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>Data Scientist Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>🔍 What Is This Role?</h2>
+      <p>
+        Data Scientists extract insights from structured and unstructured data using statistical analysis, machine learning, and data visualization. They help companies make informed decisions using data.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>📈 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Tools / Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📘 Foundation</td>
+              <td>Learn Python, statistics, basic data handling</td>
+              <td><a href="https://youtu.be/rfscVS0vtbw" target="_blank">Python for Beginners – freeCodeCamp</a></td>
+            </tr>
+            <tr>
+              <td>📊 Core Skills</td>
+              <td>Exploratory Data Analysis, visualization, hypothesis testing</td>
+              <td>Pandas, NumPy, Matplotlib, Seaborn</td>
+            </tr>
+            <tr>
+              <td>🤖 ML & Projects</td>
+              <td>Supervised & unsupervised learning, real-world datasets</td>
+              <td>Scikit-learn, Kaggle, Google Colab</td>
+            </tr>
+            <tr>
+              <td>🚀 Advanced</td>
+              <td>Deep learning, model deployment, real-time analysis</td>
+              <td>TensorFlow, PyTorch, FastAPI, Docker</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://www.coursera.org/specializations/data-science-python" target="_blank">Data Science Specialization – Coursera</a></li>
+        <li><a href="https://www.kaggle.com/learn" target="_blank">Kaggle Learning Micro-Courses</a></li>
+        <li><a href="https://www.youtube.com/watch?v=ua-CiDNNj30" target="_blank">What Is Data Science? – IBM YouTube</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🛠 Skills You’ll Need</h2>
+      <ul>
+        <li>Python and SQL</li>
+        <li>Data wrangling and visualization</li>
+        <li>Machine learning algorithms</li>
+        <li>Critical thinking and communication</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>IBM Data Science Professional Certificate</li>
+        <li>Google Advanced Data Analytics</li>
+        <li>Microsoft Azure Data Scientist Associate</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📌 Summary Card</h3>
+      <p><span class="highlight">Role:</span> Data Scientist</p>
+      <p><span class="highlight">Start With:</span> Python, basic stats, and data exploration</p>
+      <p><span class="highlight">Build:</span> End-to-end ML models and data stories</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://www.kaggle.com/datasets" target="_blank">Explore Datasets on Kaggle</a></p>
+    </div>
+
+    <h1 id="careerTitle">Data Scientist</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>
+

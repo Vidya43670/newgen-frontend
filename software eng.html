@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Software Engineer Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring Software Engineers. Learn data structures, algorithms, system design, and full-stack development.">
+  <meta property="og:title" content="Software Engineer Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step guide to becoming a Software Engineer with coding, design, tools, and project building.">
+  <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>Software Engineer Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>💻 What Is This Role?</h2>
+      <p>
+        Software Engineers design, develop, and maintain software systems and applications. They write code, solve problems, and collaborate with teams to build scalable and secure software.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>📈 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Tools / Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📘 Foundation</td>
+              <td>Learn programming languages (Python/Java), problem-solving, and algorithms</td>
+              <td><a href="https://youtu.be/8hly31xKli0" target="_blank">Python Tutorial – freeCodeCamp</a></td>
+            </tr>
+            <tr>
+              <td>🧰 Core Skills</td>
+              <td>Data structures, OOP, system design basics</td>
+              <td>GeeksforGeeks, LeetCode, HackerRank</td>
+            </tr>
+            <tr>
+              <td>🧑‍💻 Projects</td>
+              <td>Build small software tools, websites, or applications</td>
+              <td>GitHub, Replit, Netlify</td>
+            </tr>
+            <tr>
+              <td>🚀 Advanced</td>
+              <td>Learn frameworks, DevOps, cloud platforms, and system scalability</td>
+              <td>React, Node.js, Docker, AWS</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://cs50.harvard.edu/x/" target="_blank">CS50 – Harvard's Intro to Computer Science</a></li>
+        <li><a href="https://www.theodinproject.com/" target="_blank">The Odin Project – Full Stack Curriculum</a></li>
+        <li><a href="https://www.udemy.com/course/java-the-complete-java-developer-course/" target="_blank">Java Developer Course – Udemy</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🛠 Skills You’ll Need</h2>
+      <ul>
+        <li>Strong problem-solving & logical thinking</li>
+        <li>Proficiency in at least one programming language</li>
+        <li>Knowledge of version control (Git)</li>
+        <li>Understanding of software architecture & testing</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Meta Back-End or Front-End Developer Certificate</li>
+        <li>Google Associate Android Developer</li>
+        <li>Oracle Certified Java Programmer</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📝 Summary Card</h3>
+      <p><span class="highlight">Role:</span> Software Engineer</p>
+      <p><span class="highlight">Start With:</span> Python or Java and DSA basics</p>
+      <p><span class="highlight">Build:</span> Projects using real-world APIs and front-end/backend tools</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://replit.com/" target="_blank">Code Online on Replit</a></p>
+    </div>
+
+     <h1 id="careerTitle">Software Engineer</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Data Visualization Artist Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring Data Visualization Artists. Learn tools like Tableau, D3.js, and Python visualization libraries.">
+  <meta property="og:title" content="Data Visualization Artist Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step guide to becoming a Data Visualization Artist with beginner-friendly tools, videos, and skills.">
+ <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>Data Visualization Artist</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>📊 What Is This Role?</h2>
+      <p>
+        A Data Visualization Artist turns raw data into meaningful visuals. They design charts, dashboards, and graphics that tell a story and help people understand complex information.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>🛣 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Tools / Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📘 Foundation</td>
+              <td>Understand basic data concepts and types of charts</td>
+              <td><a href="https://youtu.be/AdSZJzb-aX8" target="_blank">Intro to Data Viz – YouTube</a></td>
+            </tr>
+            <tr>
+              <td>📊 Tools</td>
+              <td>Learn tools like Tableau, Power BI, and Excel</td>
+              <td>Tableau Public, Microsoft Power BI</td>
+            </tr>
+            <tr>
+              <td>💻 Coding</td>
+              <td>Use code-based tools for custom visualizations</td>
+              <td>D3.js, Plotly, Matplotlib, Seaborn</td>
+            </tr>
+            <tr>
+              <td>🚀 Portfolio</td>
+              <td>Build and share data stories or dashboards</td>
+              <td>GitHub, Tableau Public, Medium</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://youtu.be/AdSZJzb-aX8" target="_blank">Data Visualization for Beginners – YouTube</a></li>
+        <li><a href="https://www.coursera.org/learn/datavisualization" target="_blank">Data Visualization – Coursera</a></li>
+        <li><a href="https://www.kaggle.com/learn/data-visualization" target="_blank">Kaggle Data Viz Track</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🛠 Skills You’ll Need</h2>
+      <ul>
+        <li>Data interpretation and storytelling</li>
+        <li>Chart types and design aesthetics</li>
+        <li>Tools: Tableau, D3.js, Seaborn</li>
+        <li>Basic Python or JavaScript</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Tableau Desktop Specialist</li>
+        <li>Microsoft Power BI Certification</li>
+        <li>Google Data Analytics Certificate</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📌 Summary Card</h3>
+      <p><span class="highlight">Role:</span> Data Visualization Artist</p>
+      <p><span class="highlight">Start With:</span> Tableau or Excel for visual analysis</p>
+      <p><span class="highlight">Build:</span> Dashboards and infographics from real-world datasets</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://public.tableau.com/en-us/s/" target="_blank">Tableau Public</a></p>
+    </div>
+
+     <h1 id="careerTitle">Data Visualization Artist</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>
+

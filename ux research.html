@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | UX Researcher Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring UX Researchers. Learn methods like usability testing, user interviews, and data-driven design decisions.">
+  <meta property="og:title" content="UX Researcher Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step beginner-friendly guide to becoming a UX Researcher with tools, skills, and certifications.">
+ <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>UX Researcher Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>🔍 What Is This Role?</h2>
+      <p>
+        UX Researchers help teams understand user behaviors, needs, and motivations through observation techniques and feedback collection. Their insights guide product design and functionality.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>📈 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Tools / Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📘 Foundation</td>
+              <td>Learn UX principles, human-centered design, and research ethics</td>
+              <td><a href="https://youtu.be/Ovj4hFxko7c" target="_blank">UX Crash Course – YouTube</a></td>
+            </tr>
+            <tr>
+              <td>🔬 Research Skills</td>
+              <td>Practice usability testing, surveys, interviews, A/B testing</td>
+              <td>Google Forms, Maze, Optimal Workshop</td>
+            </tr>
+            <tr>
+              <td>🧠 Data Handling</td>
+              <td>Analyze user behavior and qualitative/quantitative data</td>
+              <td>Excel, Dovetail, Hotjar, Google Analytics</td>
+            </tr>
+            <tr>
+              <td>🚀 Advanced</td>
+              <td>Work on case studies, collaborate with design teams</td>
+              <td>Figma, Notion, Airtable</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://www.coursera.org/learn/user-research" target="_blank">UX Research – Coursera</a></li>
+        <li><a href="https://www.nngroup.com/courses/ux-research/" target="_blank">Nielsen Norman Group UX Research Course</a></li>
+        <li><a href="https://youtu.be/Ovj4hFxko7c" target="_blank">UX Design Process – YouTube</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎯 Skills You’ll Need</h2>
+      <ul>
+        <li>User-centered thinking</li>
+        <li>Research planning and analysis</li>
+        <li>Communication & reporting</li>
+        <li>Empathy and attention to detail</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Google UX Design Certificate</li>
+        <li>Nielsen Norman UX Research Certification</li>
+        <li>Interaction Design Foundation (IDF) Courses</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📝 Summary Card</h3>
+      <p><span class="highlight">Role:</span> UX Researcher</p>
+      <p><span class="highlight">Start With:</span> UX principles and research methods</p>
+      <p><span class="highlight">Build:</span> Case studies and research reports</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://www.userinterviews.com/" target="_blank">User Interviews Tool</a></p>
+    </div>
+
+   <h1 id="careerTitle">UX Researcher</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>
+
+
+

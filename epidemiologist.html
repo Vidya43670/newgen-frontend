@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Epidemiologist Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring Epidemiologists. Learn how to analyze disease patterns and contribute to public health.">
+  <meta property="og:title" content="Epidemiologist Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step guide to becoming an Epidemiologist with tools, certifications, and resources.">
+  
+     <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>Epidemiologist Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>🦠 What Is This Role?</h2>
+      <p>
+        Epidemiologists study disease outbreaks, track patterns, and analyze data to help prevent public health crises. They work with governments, research institutions, and healthcare providers.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>📈 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Tools / Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📘 Foundation</td>
+              <td>Biostatistics, public health basics, epidemiologic methods</td>
+              <td>CDC Courses, Coursera Public Health</td>
+            </tr>
+            <tr>
+              <td>🧪 Tools</td>
+              <td>Data analysis, spreadsheets, and statistical software</td>
+              <td>R, SAS, SPSS, Excel</td>
+            </tr>
+            <tr>
+              <td>📊 Data Work</td>
+              <td>Analyze disease trends, interpret reports, build visualizations</td>
+              <td>Tableau, Power BI, ArcGIS</td>
+            </tr>
+            <tr>
+              <td>🔬 Advance</td>
+              <td>Specialize in infectious disease, chronic illness, or global health</td>
+              <td>WHO Training, MPH or PhD</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://www.coursera.org/specializations/epidemiology" target="_blank">Epidemiology Specialization – Coursera</a></li>
+        <li><a href="https://www.cdc.gov/csels/dsepd/ss1978/index.html" target="_blank">CDC Epidemiology Training</a></li>
+        <li><a href="https://www.futurelearn.com/courses/epidemics" target="_blank">Epidemics – FutureLearn</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🔧 Skills You’ll Need</h2>
+      <ul>
+        <li>Statistical analysis</li>
+        <li>Critical thinking</li>
+        <li>Medical and biological understanding</li>
+        <li>Data visualization and reporting</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Certified in Public Health (CPH)</li>
+        <li>Applied Epidemiology Certificate – CDC</li>
+        <li>Masters of Public Health (MPH)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>🧾 Summary Card</h3>
+      <p><span class="highlight">Role:</span> Epidemiologist</p>
+      <p><span class="highlight">Start With:</span> Public health, statistics, biology</p>
+      <p><span class="highlight">Build:</span> Case studies, data investigations, policy reports</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://www.cdc.gov/csels/dsepd/ss1978/index.html" target="_blank">CDC Self-Study Course</a></p>
+    </div>
+
+  <h1 id="careerTitle">Epidemiologist</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>
+

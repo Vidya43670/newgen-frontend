@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Innovation Manager Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring Innovation Managers. Learn strategy, creativity, business models, and technology integration.">
+  <meta property="og:title" content="Innovation Manager Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step guide to becoming an Innovation Manager with tools, resources, and skills.">
+ <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>Innovation Manager Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>🚀 What Is This Role?</h2>
+      <p>
+        Innovation Managers lead initiatives that bring new ideas to life. They foster a culture of innovation, analyze trends, manage R&D, and align creative efforts with business goals.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>🗺 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Tools / Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📘 Foundation</td>
+              <td>Business strategy, design thinking, innovation theory</td>
+              <td><a href="https://youtu.be/_r0VX-aU_T8" target="_blank">Design Thinking - MIT Sloan</a></td>
+            </tr>
+            <tr>
+              <td>🔧 Explore</td>
+              <td>Learn tools for idea management, collaboration, and business model innovation</td>
+              <td>Miro, Trello, Business Model Canvas</td>
+            </tr>
+            <tr>
+              <td>🧠 Build</td>
+              <td>Lead innovation projects, track KPIs, manage interdisciplinary teams</td>
+              <td>Innovation Funnel, OKRs, Agile Methods</td>
+            </tr>
+            <tr>
+              <td>🚀 Advance</td>
+              <td>Global trends, sustainable innovation, emerging tech adoption</td>
+              <td>Harvard Innovation Labs, Gartner, TechCrunch</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://www.coursera.org/learn/innovation-strategy" target="_blank">Innovation Strategy – Coursera</a></li>
+        <li><a href="https://www.edx.org/course/innovation-and-entrepreneurship" target="_blank">Innovation & Entrepreneurship – edX</a></li>
+        <li><a href="https://www.ideou.com/products/unlocking-innovation" target="_blank">Unlocking Innovation – IDEO U</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🧠 Skills You’ll Need</h2>
+      <ul>
+        <li>Strategic thinking and creative problem solving</li>
+        <li>Cross-functional collaboration and leadership</li>
+        <li>Trend forecasting and technology awareness</li>
+        <li>Business model design and innovation metrics</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Certified Innovation Leader (CIL)</li>
+        <li>Innovation Management Certification – GIM Institute</li>
+        <li>IDEO U Innovation Courses</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📌 Summary Card</h3>
+      <p><span class="highlight">Role:</span> Innovation Manager</p>
+      <p><span class="highlight">Start With:</span> Strategy & Design Thinking Basics</p>
+      <p><span class="highlight">Build:</span> Cross-functional innovation initiatives aligned with business goals</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://miro.com/" target="_blank">Miro for Innovation Planning</a></p>
+    </div>
+
+   <h1 id="careerTitle">Innovation Manager</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>
+

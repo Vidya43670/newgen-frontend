@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Newgen Career Suggestion</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #e6f2ff, #ffffff);
+      padding: 40px;
+      color: #333;
+    }
+     .nav-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-left img {
+      width: 45px;
+      margin-right: 10px;
+    }
+     .nav-title {
+      font-size: 28px;
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    .nav-title span {
+      color: #003366;
+    }
+    h1 {
+      color: #004080;
+      text-align: center;
+    }
+    .section {
+      margin-bottom: 20px;
+    }
+    select {
+      padding: 10px;
+      margin-top: 10px;
+      width: 100%;
+      font-size: 16px;
+    }
+    .submit-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .submit-btn {
+      padding: 8px 20px;
+      font-size: 14px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .submit-btn:hover {
+      background-color: #0056b3;
+    }
+    #result {
+      margin-top: 30px;
+      padding: 20px;
+      border: 2px solid #007acc;
+      background-color: #f0faff;
+      display: none;
+    }
+    #result button {
+      margin-top: 20px;
+      padding: 8px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    #result button:hover {
+      background-color: #0056b3;
+    }
+      .footer {
+      background-color: #003366;
+      color: #fff;
+      padding: 40px 20px 20px;
+    }
+
+    .footer-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 20px;
+    }
+
+    .footer-col {
+      flex: 1 1 200px;
+      margin: 10px;
+    }
+
+    .footer-col h3, .footer-col h4 {
+      margin-bottom: 10px;
+      color: #00bfff;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-col ul li a {
+      color: #fff;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .footer-col ul li a:hover {
+      color: #00bfff;
+    }
+
+    .footer-col form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer-col input[type="email"] {
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+    }
+
+    .footer-col button {
+      padding: 10px;
+      background-color: #00bfff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .footer-col button:hover {
+      background-color: #0099cc;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+    #result {
+  margin-top: 30px;
+  margin-bottom: 60px; /* Add this line to give space before footer */
+  padding: 20px;
+  border: 2px solid #007acc;
+  background-color: #f0faff;
+  display: none;
+}
+.submit-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 40px; /* Additional spacing before footer if no result yet */
+}
+.back-dashboard {
+  display: inline-block;
+  margin: 25px 40px 0;
+  font-size: 22px;
+  color: #003366;
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+.back-dashboard:hover {
+  color: #007bff;
+  text-decoration: underline;
+}
+
+
+  </style>
+</head>
+<body>
+<nav>
+    <div class="nav-left">
+      <img src="logo.jpg" alt="Logo" />
+      <div class="nav-title">New<span>gen</span></div>
+    </div>
+  </nav>
+     <a href="home.html" class="back-dashboard" title="Back to Dashboard">&larr;</a>
+
+<h1>Find Your Ideal Career Path</h1>
+
+<div class="section">
+  <label for="interest">Choose your interest area:</label>
+  <select id="interest">
+    <option value="">--Select--</option>
+    <option value="arts">Arts</option>
+    <option value="medicine">Medicine</option>
+    <option value="business">Business</option>
+    <option value="engineering">Engineering</option>
+    <option value="law">Law</option>
+    <option value="education">Education</option>
+    <option value="design">Design</option>
+  </select>
+</div>
+
+<div class="section">
+  <label for="skill">How do you prefer to learn new skills?</label>
+  <select id="skill">
+    <option value="">Select</option>
+    <option value="coding">Coding</option>
+    <option value="books">Research</option>
+    <option value="collab">Team Discussions</option>
+    <option value="certi">Courses</option>
+  </select>
+</div>
+
+<div class="section">
+  <label for="confidence">Which of the skills do you feel most confident in?</label>
+  <select id="confidence">
+    <option value="">Select</option>
+    <option value="ltps">Logical thinking & problem-solving</option>
+    <option value="cl">Communication & Leadership</option>
+    <option value="ci">Creativity & Innovation</option>
+    <option value="as">Analytical thinking</option>
+  </select>
+</div>
+
+<div class="section">
+  <label for="goal">What is your top career goal?</label>
+  <select id="goal">
+    <option value="">Select</option>
+    <option value="high">High salary</option>
+    <option value="work">Work-life balance</option>
+    <option value="rec">Leadership</option>
+    <option value="phi">Philanthropist</option>
+  </select>
+</div>
+
+<div class="submit-container">
+  <button class="submit-btn" onclick="showResults()">Submit</button>
+</div>
+
+<div id="result">
+  <p id="resultText"></p>
+  <button onclick="restartAssessment()">Try Again</button>
+</div>
+
+    <footer class="footer">
+      <div class="footer-top">
+        <div class="footer-col">
+          <h3>Newgen</h3>
+          <p>Navigate Your Future with Confidence.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Social</h4>
+          <ul>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">YouTube</a></li>
+            <li><a href="#">LinkedIn</a></li>
+            <li><a href="#">Twitter</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#">Self-Assessment</a></li>
+            <li><a href="#">Career Explorer</a></li>
+            <li><a href="#">Roadmaps</a></li>
+            <li><a href="#">Mentor Corner</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Subscribe</h4>
+          <form>
+            <input type="email" placeholder="Your email" required />
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Newgen. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+
+<script>
+  const careerOptions = {
+    arts: {
+      coding: {
+        ltps: "Creative Coder, Generative Artist",
+        cl: "Art Director, Creative Manager",
+        ci: "Game Designer, AR/VR Developer",
+        as: "Data Visualization Artist, UX Researcher"
+      }
+    },
+    medicine: {
+      coding: {
+        ltps: "Medical Software Developer, Health Informatics Specialist",
+        cl: "Healthcare Project Manager, Medical Consultant",
+        ci: "Medical Researcher, Biomedical Engineer",
+        as: "Medical Data Scientist, Epidemiologist"
+      }
+    },
+    business: {
+      coding: {
+        ltps: "Business Intelligence Developer, Data Engineer",
+        cl: "Business Consultant, Project Manager",
+        ci: "Innovation Manager, Product Designer",
+        as: "Data Scientist, AI Engineer"
+      }
+    },
+    engineering: {
+      coding: {
+        ltps: "Software Engineer, Systems Architect",
+        cl: "Technical Team Lead, Engineering Manager",
+        ci: "Robotics Engineer, Product Developer",
+        as: "AI/ML Engineer, Embedded Systems Analyst"
+      }
+    },
+    law: {
+      books: {
+        ltps: "Corporate Lawyer, Legal Consultant",
+        cl: "Legal Aid Advocate, Social Justice Lawyer",
+        ci: "Policy Innovator, Cyber Law Expert",
+        as: "Legal Researcher, Jurisprudence Analyst"
+      }
+    },
+    education: {
+      collab: {
+        ltps: "Professor, Educational Researcher",
+        cl: "Academic Counselor, School Principal",
+        ci: "Instructional Designer, EdTech Creator",
+        as: "Curriculum Analyst, Learning Metrics Specialist"
+      }
+    },
+    design: {
+      certi: {
+        ltps: "UX/UI Designer, Design Strategist",
+        cl: "Creative Director, Visual Identity Lead",
+        ci: "Innovation Designer, AR/VR Artist",
+        as: "Design Researcher, Human Factors Analyst"
+      }
+    }
+  };
+
+  function showResults() {
+    const interest = document.getElementById('interest').value;
+    const skill = document.getElementById('skill').value;
+    const confidence = document.getElementById('confidence').value;
+    const goal = document.getElementById('goal').value;
+
+    let result = "Based on your answers, explore career options that suit your profile.";
+
+    if (
+      careerOptions[interest] &&
+      careerOptions[interest][skill] &&
+      careerOptions[interest][skill][confidence]
+    ) {
+      const careers = careerOptions[interest][skill][confidence];
+      result = `🎯 Suggested careers for you:\n\n${careers}\n\n🌟 Career goal preference: ${goal}`;
+    } else {
+      result = "⚠️ Sorry, we couldn't find a career match for your selections.";
+    }
+
+    document.getElementById('resultText').innerText = result;
+    document.getElementById('result').style.display = 'block';
+  }
+
+  function restartAssessment() {
+    document.getElementById('interest').value = "";
+    document.getElementById('skill').value = "";
+    document.getElementById('confidence').value = "";
+    document.getElementById('goal').value = "";
+    document.getElementById('result').style.display = 'none';
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen AI Chatbot</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #e6f2ff, #ffffff);
+      font-family: 'Segoe UI', sans-serif;
+      padding: 20px;
+      margin: 0;
+    }
+
+    h1 {
+      text-align: center;
+      color: #004080;
+    }
+
+    #chat-box {
+      background-color: #f2f8ff;
+      border: 2px solid #cce0ff;
+      border-radius: 12px;
+      height: 420px;
+      padding: 15px;
+      overflow-y: auto;
+      box-shadow: 0 0 10px #cce0ff;
+      margin-bottom: 20px;
+    }
+
+    .bubble {
+      max-width: 70%;
+      padding: 10px 15px;
+      margin: 10px;
+      border-radius: 16px;
+      line-height: 1.4;
+      display: inline-block;
+      clear: both;
+      font-size: 16px;
+      word-wrap: break-word;
+    }
+
+    .user {
+      background-color: #d0e6ff;
+      float: right;
+      text-align: right;
+    }
+
+    .bot {
+      background-color: #e0ecff;
+      float: left;
+      text-align: left;
+    }
+
+    #input-area {
+      display: flex;
+      gap: 10px;
+    }
+
+    #user-input {
+      flex: 1;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #99ccff;
+      border-radius: 8px;
+    }
+
+    #send-btn {
+      background-color: #0066cc;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #send-btn:hover {
+      background-color: #005bb5;
+    }
+    .back-dashboard {
+  display: inline-block;
+  margin: 25px 40px 0;
+  font-size: 22px;
+  color: #003366;
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+.back-dashboard:hover {
+  color: #007bff;
+  text-decoration: underline;
+}
+ nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 30px;
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      position: relative;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-left img {
+      width: 45px;
+      margin-right: 10px;
+    }
+
+    .nav-title {
+      font-size: 28px;
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    .nav-title span {
+      color: #003366;
+    }
+
+
+  </style>
+</head>
+<body>
+   <nav>
+    <div class="nav-left">
+      <img src="logo.jpg" alt="Newgen Logo">
+      <div class="nav-title">New<span>gen</span></div>
+    </div>
+  </nav>
+   <a href="home.html" class="back-dashboard" title="Back to Dashboard">&larr;</a>
+
+  <h1>Newgen AI Chatbot</h1>
+
+  <div id="chat-box"></div>
+
+  <div id="input-area">
+    <input type="text" id="user-input" placeholder="Type your question here..." />
+    <button id="send-btn">Send</button>
+  </div>
+
+  <script>
+    const chatBox = document.getElementById("chat-box");
+    const userInput = document.getElementById("user-input");
+    const sendButton = document.getElementById("send-btn");
+
+    sendButton.addEventListener("click", async () => {
+      const message = userInput.value.trim();
+      if (!message) return;
+
+      // Show user message
+      const userBubble = document.createElement("div");
+      userBubble.className = "bubble user";
+      userBubble.textContent = message;
+      chatBox.appendChild(userBubble);
+      chatBox.scrollTop = chatBox.scrollHeight;
+      userInput.value = "";
+
+      try {
+        const res = await fetch("http://localhost:5000/chat", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ message })
+        });
+
+        if (!res.ok) throw new Error("Response not OK");
+
+        const data = await res.json();
+
+        const botBubble = document.createElement("div");
+        botBubble.className = "bubble bot";
+        botBubble.textContent = data.reply || "⚠️ AI gave no reply.";
+        chatBox.appendChild(botBubble);
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+      } catch (err) {
+        const errorBubble = document.createElement("div");
+        errorBubble.className = "bubble bot";
+        errorBubble.textContent = "⚠️ AI response failed!";
+        chatBox.appendChild(errorBubble);
+        chatBox.scrollTop = chatBox.scrollHeight;
+        console.error("Fetch error:", err);
+      }
+    });
+
+    // Enter key shortcut
+    userInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") sendButton.click();
+    });
+  </script>
+</body>
+</html>

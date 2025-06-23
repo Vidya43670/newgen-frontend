@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Medical Software Developer Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring Medical Software Developers. Learn programming, healthcare standards, and tools for building healthcare tech solutions.">
+  <meta property="og:title" content="Medical Software Developer Roadmap - Newgen">
+  <meta property="og:description" content="Beginner-friendly guide to becoming a Medical Software Developer. Includes steps, skills, tools, and certifications.">
+  <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>Medical Software Developer Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>🩺 What Is This Role?</h2>
+      <p>
+        Medical Software Developers build software solutions for healthcare such as electronic health records (EHR), diagnostic tools, and health apps that follow clinical safety and regulatory standards.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>🧭 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Tools / Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📘 Foundation</td>
+              <td>Learn programming, databases, and healthcare basics</td>
+              <td>Python, SQL, Health IT 101</td>
+            </tr>
+            <tr>
+              <td>⚙️ Core Skills</td>
+              <td>Understand healthcare standards and secure data handling</td>
+              <td>FHIR, HL7, HIPAA, MongoDB</td>
+            </tr>
+            <tr>
+              <td>🛠 Development</td>
+              <td>Build simple health apps or tools using real or dummy datasets</td>
+              <td>Flask/Django, REST APIs, GitHub</td>
+            </tr>
+            <tr>
+              <td>🚀 Advanced</td>
+              <td>Integrate AI/ML or work on diagnostic/clinical software systems</td>
+              <td>TensorFlow, AWS HealthLake, Azure Health Bot</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://youtu.be/kG-G1G7t3vM" target="_blank">Intro to Healthcare IT – YouTube</a></li>
+        <li><a href="https://www.coursera.org/learn/healthcare-it" target="_blank">Healthcare IT Fundamentals – Coursera</a></li>
+        <li><a href="https://www.udemy.com/course/build-healthcare-apps-with-python/" target="_blank">Building Healthcare Apps – Udemy</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🧠 Skills You’ll Need</h2>
+      <ul>
+        <li>Python, SQL, API development</li>
+        <li>Knowledge of healthcare data formats (FHIR, HL7)</li>
+        <li>Basic understanding of clinical workflows</li>
+        <li>Compliance: HIPAA, GDPR (for health apps)</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Certified Professional in Healthcare Information & Management Systems (CPHIMS)</li>
+        <li>Coursera – Healthcare IT Specialization</li>
+        <li>Udemy – Building Healthcare Projects in Python</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>💡 Summary Card</h3>
+      <p><span class="highlight">Role:</span> Medical Software Developer</p>
+      <p><span class="highlight">Start With:</span> Python, databases, healthcare basics</p>
+      <p><span class="highlight">Build:</span> Health-related tools with FHIR APIs or dummy data</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://healthcare.api.stdlib.com/" target="_blank">Health APIs Playground</a></p>
+    </div>
+
+    
+     <h1 id="careerTitle">Medical Software Developer</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Product Designer Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring Product Designers. Learn design thinking, UI/UX tools, and build a creative product design portfolio.">
+  <meta property="og:title" content="Product Designer Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step guide to becoming a Product Designer with tools like Figma, Adobe XD, and prototyping skills.">
+  <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>Product Designer Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>🎨 What Is This Role?</h2>
+      <p>
+        Product Designers create intuitive, user-centered products by combining UX/UI design, interaction design, and strategy. They ensure designs meet both user needs and business goals.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>🛤 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Tools / Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📘 Foundation</td>
+              <td>Learn design thinking, color theory, typography</td>
+              <td><a href="https://youtu.be/_QZpZz5P4dY" target="_blank">UX Crash Course – DesignCourse</a></td>
+            </tr>
+            <tr>
+              <td>🛠 Tools</td>
+              <td>Master design and prototyping tools</td>
+              <td>Figma, Adobe XD, Sketch, InVision</td>
+            </tr>
+            <tr>
+              <td>📐 Build</td>
+              <td>Design complete user flows and responsive UIs</td>
+              <td>Portfolio projects, Dribbble, Behance</td>
+            </tr>
+            <tr>
+              <td>🚀 Advance</td>
+              <td>UX strategy, user testing, and design systems</td>
+              <td>Maze, Hotjar, Google UX Playbook</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://www.coursera.org/specializations/ui-ux-design" target="_blank">UI/UX Design Specialization – Coursera</a></li>
+        <li><a href="https://www.udemy.com/course/product-design-interview-preparation/" target="_blank">Product Design Interview Prep – Udemy</a></li>
+        <li><a href="https://www.interaction-design.org/" target="_blank">Interaction Design Foundation</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🧠 Skills You’ll Need</h2>
+      <ul>
+        <li>Design principles & visual communication</li>
+        <li>User research & testing</li>
+        <li>Prototyping & wireframing</li>
+        <li>Collaboration & feedback handling</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Google UX Design Certificate</li>
+        <li>Adobe Certified Professional – UX Design</li>
+        <li>HFI Certified Usability Analyst (CUA)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📝 Summary Card</h3>
+      <p><span class="highlight">Role:</span> Product Designer</p>
+      <p><span class="highlight">Start With:</span> Design fundamentals and Figma</p>
+      <p><span class="highlight">Build:</span> UI/UX case studies and mockups</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://www.figma.com" target="_blank">Figma</a></p>
+    </div>
+
+    <h1 id="careerTitle">Product Designer</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>
+
+
+

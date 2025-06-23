@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Legal Consultant Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring Legal Consultants. Learn legal research, advisory, and business law for corporate consultation.">
+  <meta property="og:title" content="Legal Consultant Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step guide to becoming a Legal Consultant with focus on compliance, advisory roles, and client engagement.">
+  <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>Legal Consultant Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>🔧 What Is This Role?</h2>
+      <p>
+        Legal Consultants provide expert legal advice to businesses and individuals without necessarily representing them in court. They assist in compliance, contract drafting, policy review, and legal risk assessment.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>📈 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Tools / Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📘 Foundation</td>
+              <td>Earn a law degree (LLB), understand contracts, torts, and constitutional law</td>
+              <td>Casebooks, Bare Acts, Indian Kanoon</td>
+            </tr>
+            <tr>
+              <td>⚙️ Specialization</td>
+              <td>Pick a niche: corporate law, tax, intellectual property, compliance</td>
+              <td>LLM, Company Law Modules</td>
+            </tr>
+            <tr>
+              <td>🧠 Practical Skills</td>
+              <td>Contract drafting, policy reviews, legal research tools</td>
+              <td>LexisNexis, Westlaw, Compliance tools</td>
+            </tr>
+            <tr>
+              <td>🚀 Consultation</td>
+              <td>Work with firms or independently; offer legal advice for specific business/legal problems</td>
+              <td>Client management platforms, NDAs, Risk checklists</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://www.coursera.org/learn/compliance-law" target="_blank">Corporate & Commercial Law – Coursera</a></li>
+        <li><a href="https://www.legal500.com/" target="_blank">Legal 500 – Global Firms Database</a></li>
+        <li><a href="https://blog.ipleaders.in/" target="_blank">iPleaders Blog – Practical Legal Advice</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🧠 Skills You’ll Need</h2>
+      <ul>
+        <li>Legal research & writing</li>
+        <li>Client communication & documentation</li>
+        <li>Understanding of business regulations</li>
+        <li>Analytical thinking & confidentiality</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Postgraduate Diploma in Business Law</li>
+        <li>Certificate in Corporate Compliance</li>
+        <li>LLM in Business Law</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📝 Summary Card</h3>
+      <p><span class="highlight">Role:</span> Legal Consultant</p>
+      <p><span class="highlight">Start With:</span> LLB and basic legal research skills</p>
+      <p><span class="highlight">Specialize In:</span> Corporate, IP, or Tax Law</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://www.legal500.com/" target="_blank">Explore Top Law Firms</a></p>
+    </div>
+
+    <h1 id="careerTitle">Legal Consultant</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>
+

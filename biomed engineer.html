@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Biomedical Engineer Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring Biomedical Engineers. Learn about devices, healthcare technology, and interdisciplinary tools.">
+  <meta property="og:title" content="Biomedical Engineer Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step beginner-friendly guide to becoming a Biomedical Engineer with courses, tools, and examples.">
+  <link rel="stylesheet" href="explore.css">
+   
+</head>
+<body>
+  <header>
+    <h1>Biomedical Engineer Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>🧬 What Is This Role?</h2>
+      <p>
+        Biomedical Engineers bridge healthcare and engineering by developing technologies such as medical devices, diagnostic tools, prosthetics, and wearable tech to improve patient outcomes.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>🛤 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Tools / Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>📘 Foundation</td>
+              <td>Understand biology, human anatomy, and engineering principles</td>
+              <td>Khan Academy, MIT OpenCourseWare</td>
+            </tr>
+            <tr>
+              <td>🧪 Intermediate</td>
+              <td>Learn medical device design, signals & systems, biomechanics</td>
+              <td>MATLAB, Arduino, Simulink</td>
+            </tr>
+            <tr>
+              <td>💻 Projects</td>
+              <td>Build prototypes like pulse sensors, ECG monitors, or prosthetic parts</td>
+              <td>Raspberry Pi, SolidWorks</td>
+            </tr>
+            <tr>
+              <td>🚀 Advanced</td>
+              <td>Explore areas like tissue engineering, bioinstrumentation, wearable tech</td>
+              <td>LabVIEW, 3D Printing, Python (for data analysis)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://youtu.be/oU0Ubs2KYUI" target="_blank">Introduction to Biomedical Engineering – YouTube</a></li>
+        <li><a href="https://ocw.mit.edu/courses/biological-engineering/" target="_blank">MIT Biological Engineering Courses</a></li>
+        <li><a href="https://www.coursera.org/specializations/biomedical-engineering" target="_blank">Coursera – Biomedical Engineering Specialization</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🛠 Skills You’ll Need</h2>
+      <ul>
+        <li>Engineering design & CAD</li>
+        <li>Medical instrumentation</li>
+        <li>Signal processing & programming (MATLAB, Python)</li>
+        <li>Clinical knowledge & problem solving</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Certified Biomedical Auditor (CBA)</li>
+        <li>Certified Clinical Engineer (CCE)</li>
+        <li>Coursera or edX Biomedical Engineering certificates</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📝 Summary Card</h3>
+      <p><span class="highlight">Role:</span> Biomedical Engineer</p>
+      <p><span class="highlight">Start With:</span> Biology, electronics, and basic CAD tools</p>
+      <p><span class="highlight">Build:</span> Simple health tech prototypes and simulations</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://www.tinkercad.com/" target="_blank">TinkerCAD for biomedical design</a></p>
+    </div>
+
+     <h1 id="careerTitle">Biomedical Engineer</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>

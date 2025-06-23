@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Newgen | Design Strategist Roadmap</title>
+  <meta name="description" content="Career roadmap for aspiring Design Strategists. Learn branding, UX research, product thinking, and innovation leadership.">
+  <meta property="og:title" content="Design Strategist Roadmap - Newgen">
+  <meta property="og:description" content="Step-by-step guide to becoming a Design Strategist with a focus on user experience, business strategy, and innovation.">
+  <link rel="stylesheet" href="explore.css">
+</head>
+<body>
+  <header>
+    <h1>Design Strategist Roadmap</h1>
+  </header>
+
+  <div class="container">
+    <div class="section">
+      <h2>🎯 What Is This Role?</h2>
+      <p>
+        A Design Strategist bridges the gap between design thinking and business goals. They identify user needs, align them with business objectives, and create strategies for innovative solutions. This role involves research, facilitation, and cross-functional collaboration.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>📈 Career Roadmap</h2>
+      <div class="roadmap-table-container">
+        <table class="roadmap-table">
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What to Focus On</th>
+              <th>Examples / Topics</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>🔍 Understand</td>
+              <td>Basics of design thinking, user research, and business models</td>
+              <td>Empathy Mapping, Business Model Canvas</td>
+            </tr>
+            <tr>
+              <td>🧠 Strategy</td>
+              <td>Apply strategic thinking to product or service development</td>
+              <td>Value Proposition, Customer Journey Mapping</td>
+            </tr>
+            <tr>
+              <td>📊 Execute</td>
+              <td>Design facilitation, sprint planning, stakeholder alignment</td>
+              <td>Workshops, Design Sprints, Strategy Decks</td>
+            </tr>
+            <tr>
+              <td>🚀 Advance</td>
+              <td>Lead innovation efforts, coach design teams, publish insights</td>
+              <td>Thought Leadership, Conference Talks, Case Studies</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📚 Learn from These</h2>
+      <ul>
+        <li><a href="https://www.ideou.com/products/design-thinking" target="_blank">IDEO U – Design Thinking Course</a></li>
+        <li><a href="https://www.coursera.org/specializations/strategic-leadership" target="_blank">Strategic Leadership Specialization – Coursera</a></li>
+        <li><a href="https://hbr.org/" target="_blank">Harvard Business Review – Design & Strategy Articles</a></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🛠 Skills You’ll Need</h2>
+      <ul>
+        <li>Design thinking & facilitation</li>
+        <li>Strategic & systems thinking</li>
+        <li>Business model development</li>
+        <li>Cross-functional collaboration</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🎓 Certifications (Optional)</h2>
+      <ul>
+        <li>Certified Design Thinking Facilitator</li>
+        <li>IDEO U Design Strategy Courses</li>
+        <li>Strategic Innovation Certifications</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>📌 Summary Card</h3>
+      <p><span class="highlight">Role:</span> Design Strategist</p>
+      <p><span class="highlight">Start With:</span> Design thinking and business model basics</p>
+      <p><span class="highlight">Build:</span> Strategic design skills and leadership experience</p>
+      <p><span class="highlight">Try Now:</span> <a href="https://www.strategyzer.com/canvas/business-model-canvas" target="_blank">Strategyzer Business Model Canvas</a></p>
+    </div>
+
+   <h1 id="careerTitle">Design Strategist</h1>
+
+<div class="save-button">
+  <button id="saveBtn">💾 Save This Course</button>
+</div>
+
+<script>
+  const user = JSON.parse(localStorage.getItem("user"));
+  const careerTitle = document.getElementById("careerTitle").innerText;
+
+  document.getElementById("saveBtn").onclick = function () {
+    if (!user) {
+      alert("Please log in to save this course.");
+      window.location.href = "login.html";
+      return;
+    }
+
+    fetch("http://localhost:5000/saveCourse", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("✅ Course saved!");
+        } else {
+          alert("⚠️ Already saved or failed to save.");
+        }
+      })
+      .catch(err => {
+        console.error("Save error:", err);
+        alert("❌ Could not save course.");
+      });
+  };
+</script>
+
+    <div class="back-button">
+      <a href="explore.html">Back to Explore Courses</a>
+    </div>
+  </div>
+  <script src="savecourse.js"></script>
+</body>
+</html>
+
