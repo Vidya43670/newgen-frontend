@@ -147,22 +147,17 @@
       <h4>💾 Saved Career Courses</h4>
     </div>
   </div>
+  <script src="config.js"></script> <!-- Load BASE_URL first -->
     <script src="careers.js"></script>
 
-  <script>
-    const coursePageMap = {};
-    careers.forEach(({ title, link }) => {
-      coursePageMap[title] = link;
-    });
-  </script>
-  <script>
+ <script>
     const user = JSON.parse(localStorage.getItem("user"));
 
     if (!user) {
       alert("User not logged in");
       window.location.href = "login.html";
     } else {
-      fetch(`http://localhost:5000/profile/${user.id}`)
+      fetch(`${BASE_URL}/profile/${user.id}`)
         .then(res => res.json())
         .then(data => {
           const userInfoDiv = document.getElementById("userInfo");
@@ -188,7 +183,6 @@
           if (data.careers && data.careers.length > 0) {
             data.careers.forEach(item => {
               const courseFile = coursePageMap[item.career_name];
-
               if (courseFile) {
                 savedCareersDiv.innerHTML += `
                   <div class="career-item">

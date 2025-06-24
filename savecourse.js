@@ -1,31 +1,29 @@
-function saveCourseForUser(courseName) {
-  const user = JSON.parse(localStorage.getItem("user"));
+// savecourse.js
+const user = JSON.parse(localStorage.getItem("user"));
+const careerTitle = document.getElementById("careerTitle").innerText;
 
-  if (!user || !user.id) {
+document.getElementById("saveBtn").onclick = function () {
+  if (!user) {
     alert("Please log in to save this course.");
+    window.location.href = "login.html";
     return;
   }
 
-  const data = {
-    user_id: user.id,
-    career_name: courseName
-  };
-
-  fetch("http://localhost:5000/save-career", {
+  fetch(`${BASE_URL}/saveCourse`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data)
+    body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
   })
-  .then(res => res.json())
-  .then(response => {
-    if (response.message.includes("successfully")) {
-      alert("✅ Course saved to your profile!");
-    } else {
-      alert("⚠️ " + response.message);
-    }
-  })
-  .catch(error => {
-    console.error("Error:", error);
-    alert("❌ Could not save course. Please try again later.");
-  });
-}
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        alert("✅ Course saved!");
+      } else {
+        alert("⚠️ Already saved or failed to save.");
+      }
+    })
+    .catch(err => {
+      console.error("Save error:", err);
+      alert("❌ Could not save course.");
+    });
+};
