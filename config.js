@@ -1,2 +1,1 @@
-// config.js
-const BASE_URL = "http://localhost:5000"; // 🔁 Later change this to your Railway backend URL
+const BASE_URL = "https://newgen-backend-production.up.railway.app";
