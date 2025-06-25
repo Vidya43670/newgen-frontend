@@ -143,70 +143,50 @@
       <h4>💾 Saved Career Courses</h4>
     </div>
   </div>
- <script src="config.js"></script> <!-- Load BASE_URL first -->
-<script src="careers.js"></script>
 
-<script>
-  const user = JSON.parse(localStorage.getItem("user"));
-  console.log("👤 Logged-in user:", user);
+  <!-- ✅ Load scripts in the correct order -->
+  <script src="config.js"></script>     <!-- loads BASE_URL -->
+  <script src="careers.js"></script>    <!-- loads coursePageMap -->
+  <script>
+    const user = JSON.parse(localStorage.getItem("user"));
 
-  // Check if user is not logged in or missing ID
-  if (!user || !user.id) {
-    alert("User not logged in or session expired. Please log in again.");
-    window.location.href = "login.html";
-  } else {
-    fetch(`${BASE_URL}/profile/${user.id}`)
-      .then(res => res.json())
-      .then(data => {
-        console.log("📦 Profile data received:", data);
+    if (!user) {
+      alert("User not logged in");
+      window.location.href = "login.html";
+    } else {
+      fetch(`${BASE_URL}/profile/${user.id}`)
+        .then(res => {
+          if (!res.ok) throw new Error("Failed to fetch profile");
+          return res.json();
+        })
+        .then(data => {
+          // User Info
+          const userInfoDiv = document.getElementById("userInfo");
+          userInfoDiv.innerHTML += `
+            <p><strong>Name:</strong> ${data.user.name}</p>
+            <p><strong>Email:</strong> ${data.user.email}</p>
+          `;
 
-        const userInfoDiv = document.getElementById("userInfo");
-        userInfoDiv.innerHTML += `
-          <p><strong>Name:</strong> ${data.user.name}</p>
-          <p><strong>Email:</strong> ${data.user.email}</p>
-        `;
-
-        const testResultsDiv = document.getElementById("testResults");
-        if (data.tests && data.tests.length > 0) {
-          data.tests.forEach(result => {
-            testResultsDiv.innerHTML += `
-              <div class="test-item">
-                <strong>${result.category}</strong>: ${result.score}%
-              </div>
-            `;
-          });
-        } else {
-          testResultsDiv.innerHTML += "<p>No test results found.</p>";
-        }
-
-        const savedCareersDiv = document.getElementById("savedCareers");
-        if (data.careers && data.careers.length > 0) {
-          data.careers.forEach(item => {
-            const courseFile = coursePageMap[item.career_name];
-            if (courseFile) {
+          // Saved Careers
+          const savedCareersDiv = document.getElementById("savedCareers");
+          if (data.careers.length > 0) {
+            data.careers.forEach(item => {
+              const courseFile = coursePageMap[item.career_name];
               savedCareersDiv.innerHTML += `
                 <div class="career-item">
-                  <a href="${courseFile}">${item.career_name}</a>
+                  <a href="${courseFile || '#'}">${item.career_name}</a>
                 </div>
               `;
-            } else {
-              savedCareersDiv.innerHTML += `
-                <div class="career-item">
-                  ${item.career_name} (page not found)
-                </div>
-              `;
-            }
-          });
-        } else {
-          savedCareersDiv.innerHTML += "<p>No saved careers found.</p>";
-        }
-      })
-      .catch(err => {
-        console.error("❌ Error loading profile:", err);
-        alert("Could not load profile data. Please try again.");
-      });
-  }
-</script>
-
+            });
+          } else {
+            savedCareersDiv.innerHTML += "<p>No saved careers found.</p>";
+          }
+        })
+        .catch(err => {
+          console.error("❌ Error loading profile:", err);
+          alert("Could not load profile data. Please try again.");
+        });
+    }
+  </script>
 </body>
 </html>
