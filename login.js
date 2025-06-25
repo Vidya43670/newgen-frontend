@@ -1,5 +1,3 @@
-// ✅ Make sure BASE_URL points to your Railway backend
-const BASE_URL = "https://newgen-backend-production.up.railway.app";
 
 const loginTab = document.getElementById("loginTab");
 const signupTab = document.getElementById("signupTab");
