@@ -56,5 +56,9 @@ const careers = [
           { title: "Human Factors Analyst", link: "hfa.html", desc: "Optimize systems based on user behavior and ergonomics." },
         { title: "AIML Engineer", link: "AIML ENG.html", desc: "Build and deploy AI/ML models to solve real-world problems." },
 ];
-const careerTitles = careers.map(c => c.title);
+
+const coursePageMap = {};
+careers.forEach(c => {
+  coursePageMap[c.title] = c.link;
+});
 console.log(careerTitles);
