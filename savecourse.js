@@ -1,4 +1,3 @@
-// savecourse.js
 const user = JSON.parse(localStorage.getItem("user"));
 const careerTitle = document.getElementById("careerTitle").innerText;
 
@@ -12,7 +11,7 @@ document.getElementById("saveBtn").onclick = function () {
   fetch(`${BASE_URL}/saveCourse`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ userId: user.id, career_name: careerTitle }),
+    body: JSON.stringify({ userId: user.id, careerName: careerTitle }),
   })
     .then(res => res.json())
     .then(data => {
